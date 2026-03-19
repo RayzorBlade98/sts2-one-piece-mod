@@ -1,0 +1,8 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+.idea
+.godot
+/RayzorBlade98.Sts2.OnePiece.sln.DotSettings.user
