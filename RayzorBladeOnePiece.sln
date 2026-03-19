@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayzorBlade98.Sts2.OnePiece", "RayzorBlade98.Sts2.OnePiece.csproj", "{D4D677E5-7C45-42A3-B758-6CFA570A637A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayzorBladeOnePiece", "RayzorBladeOnePiece.csproj", "{D4D677E5-7C45-42A3-B758-6CFA570A637A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

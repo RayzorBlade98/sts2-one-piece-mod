@@ -10,13 +10,13 @@ config_version=5
 
 [application]
 
-config/name="RayzorBlade98.Sts2.OnePiece"
+config/name="RayzorBladeOnePiece"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 config/icon="res://icon.svg"
 
 [dotnet]
 
-project/assembly_name="RayzorBlade98.Sts2.OnePiece"
+project/assembly_name="RayzorBladeOnePiece"
 
 [rendering]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnrm6kic1d4cn"
-path="res://.godot/imported/mod_image.png-262312282f31f6c6468f8ab9b26ee427.ctex"
+path="res://.godot/imported/mod_image.png-3cb8ae419523f5c031b096fffadac0a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RayzorBlade98.Sts2.OnePiece/mod_image.png"
-dest_files=["res://.godot/imported/mod_image.png-262312282f31f6c6468f8ab9b26ee427.ctex"]
+source_file="res://RayzorBladeOnePiece/mod_image.png"
+dest_files=["res://.godot/imported/mod_image.png-3cb8ae419523f5c031b096fffadac0a2.ctex"]
 
 [params]
 

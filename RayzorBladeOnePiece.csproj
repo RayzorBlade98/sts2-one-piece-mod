@@ -79,25 +79,26 @@
     <ItemGroup>
         <PackageReference Include="Alchyr.Sts2.BaseLib" Version="0.1.7" PrivateAssets="All" />
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.5" />
-        <AdditionalFiles Include="RayzorBlade98.Sts2.OnePiece/localization/**/*.json"/>
+        <AdditionalFiles Include="RayzorBladeOnePiece/localization/**/*.json"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Remove="RayzorBlade98.Sts2.OnePiece/**"/>
+        <Compile Remove="RayzorBladeOnePiece/**"/>
         <Compile Remove="materials/**"/>
         <Compile Remove="shaders/**"/>
         <Compile Remove="images/**"/>
-        <EmbeddedResource Remove="RayzorBlade98.Sts2.OnePiece/**"/>
+        <EmbeddedResource Remove="RayzorBladeOnePiece/**"/>
         <EmbeddedResource Remove="materials/**"/>
         <EmbeddedResource Remove="shaders/**"/>
         <EmbeddedResource Remove="images/**"/>
+        <Compile Remove="packages\bepinex.assemblypublicizer.msbuild\0.4.3\contentFiles\cs\any\IgnoresAccessChecksToAttribute.cs.uid" />
     </ItemGroup>
 
     <ItemGroup>
         <None Include=".gitignore"/>
-        <None Include="RayzorBlade98.Sts2.OnePiece.json"/>
+        <None Include="RayzorBladeOnePiece.json" />
         <None Include="project.godot"/>
-        <None Include="RayzorBlade98.Sts2.OnePiece/**"/>
+        <None Include="RayzorBladeOnePiece/**"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -119,7 +120,7 @@
     <Target Name="CopyToModsFolderOnBuild" AfterTargets="PostBuildEvent">
         <Message Text="Copying .dll and manifest to mods folder." Importance="high"/>
         <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/"/>
-        <Copy SourceFiles="RayzorBlade98.Sts2.OnePiece.json" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/"/>
+        <Copy SourceFiles="RayzorBladeOnePiece.json" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/"/>
         <Message Text="Copying BaseLib to mods folder." Importance="high"/>
         <ItemGroup>
             <BaseLibFiles Include="$(NuGetPackageRoot)/alchyr.sts2.baselib/**/lib/**/BaseLib.dll;$(NuGetPackageRoot)/alchyr.sts2.baselib/**/Content/BaseLib.pck;$(NuGetPackageRoot)/alchyr.sts2.baselib/**/Content/BaseLib.json;"/>
