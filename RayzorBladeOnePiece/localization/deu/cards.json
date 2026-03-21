@@ -5,6 +5,8 @@
   "RAYZORBLADEONEPIECE-DOUBLE_SLOW_BEAM.title": "Doppelter Slow Beam",
   "RAYZORBLADEONEPIECE-KYUBI_RUSH.description": "Füge einem Gegner {Repeat:diff()} Mal {Damage:diff()} Schaden zu. Trifft {RepeatOnSlowed:diff()} Mal, falls der Gegner [gold]Slow Beamed[/gold] ist.",
   "RAYZORBLADEONEPIECE-KYUBI_RUSH.title": "Kyubi Ansturm",
+  "RAYZORBLADEONEPIECE-MASHI_MASHI_SLOW_BEAM.description": "Falls der Gegner [gold]Slow Beamed[/gold] ist, [gold]betäube[/gold] ihn.",
+  "RAYZORBLADEONEPIECE-MASHI_MASHI_SLOW_BEAM.title": "Mashi Mashi Slow Beam",
   "RAYZORBLADEONEPIECE-MEGATON_KYUBI_RUSH.description": "Füge einem Gegner {Repeat:diff()} Mal {Damage:diff()} Schaden zu. Trifft {RepeatOnSlowed:diff()} Mal, falls der Gegner [gold]Slow Beamed[/gold] ist.",
   "RAYZORBLADEONEPIECE-MEGATON_KYUBI_RUSH.title": "Megatonnen Kyubi Ansturm",
   "RAYZORBLADEONEPIECE-SLOW_BEAM.description": "Wende [gold]Slow Beamed[/gold] an.",
