@@ -17,7 +17,14 @@ namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
 [Pool(typeof(SlowSlowFruitCardPool))]
 public class MegatonKyubiRush() : CustomCard(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(3M, ValueProp.Move)];
+    private const string RepeatOnSlowedKey = "RepeatOnSlowed";
+    
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DamageVar(3M, ValueProp.Move),
+        new RepeatVar(5),
+        new(RepeatOnSlowedKey, 9m)
+    ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SlowBeamPower>()];
 
@@ -27,7 +34,9 @@ public class MegatonKyubiRush() : CustomCard(3, CardType.Attack, CardRarity.Rare
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        var hitCount = cardPlay.Target.HasPower<SlowBeamPower>() ? 9 : 5;
+        var hitCount = cardPlay.Target.HasPower<SlowBeamPower>()
+            ? DynamicVars[RepeatOnSlowedKey].IntValue
+            : DynamicVars.Repeat.IntValue;
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(hitCount)
             .FromCard(this)

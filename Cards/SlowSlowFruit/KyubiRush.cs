@@ -17,7 +17,14 @@ namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
 [Pool(typeof(SlowSlowFruitCardPool))]
 public class KyubiRush() : CustomCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(2M, ValueProp.Move)];
+    private const string RepeatOnSlowedKey = "RepeatOnSlowed";
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DamageVar(2M, ValueProp.Move),
+        new RepeatVar(5),
+        new(RepeatOnSlowedKey, 9m)
+    ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SlowBeamPower>()];
 
@@ -27,7 +34,9 @@ public class KyubiRush() : CustomCard(2, CardType.Attack, CardRarity.Uncommon, T
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        var hitCount = cardPlay.Target.HasPower<SlowBeamPower>() ? 9 : 5;
+        var hitCount = cardPlay.Target.HasPower<SlowBeamPower>()
+            ? DynamicVars[RepeatOnSlowedKey].IntValue
+            : DynamicVars.Repeat.IntValue;
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .WithHitCount(hitCount)
             .FromCard(this)
@@ -35,6 +44,6 @@ public class KyubiRush() : CustomCard(2, CardType.Attack, CardRarity.Uncommon, T
             .WithHitFx("vfx/vfx_attack_blunt")
             .Execute(choiceContext);
     }
-    
+
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(1M);
 }

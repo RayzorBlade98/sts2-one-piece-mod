@@ -3,7 +3,6 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.ValueProps;
-using RayzorBladeOnePiece.Extensions;
 
 namespace RayzorBladeOnePiece.Powers;
 
@@ -21,7 +20,7 @@ public class SlowBeamCounterPower : CustomPower
      */
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side != Owner.GetCombatSide())
+        if (side != Owner.Side)
         {
             return;
         }
