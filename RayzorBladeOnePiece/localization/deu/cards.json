@@ -8,5 +8,7 @@
   "RAYZORBLADEONEPIECE-MEGATON_KYUBI_RUSH.description": "Füge einem Gegner {Repeat:diff()} Mal {Damage:diff()} Schaden zu. Trifft {RepeatOnSlowed:diff()} Mal, falls der Gegner [gold]Slow Beamed[/gold] ist.",
   "RAYZORBLADEONEPIECE-MEGATON_KYUBI_RUSH.title": "Megatonnen Kyubi Ansturm",
   "RAYZORBLADEONEPIECE-SLOW_BEAM.description": "Wende [gold]Slow Beamed[/gold] an.",
-  "RAYZORBLADEONEPIECE-SLOW_BEAM.title": "Slow Beam"
+  "RAYZORBLADEONEPIECE-SLOW_BEAM.title": "Slow Beam",
+  "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.description": "Wende [gold]Slow Beamed[/gold] an. Füge {Damage:diff()} Schaden zu. Falls der Gegner bereits [gold]Slow Beamed[/gold] ist, entferne es und löse den [gold]gespeicherten Schaden[/gold] aus.",
+  "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.title": "Slow Beam Schwert"
 }

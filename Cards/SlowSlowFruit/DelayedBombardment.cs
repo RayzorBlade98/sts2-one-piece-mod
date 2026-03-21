@@ -1,5 +1,4 @@
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -28,8 +27,7 @@ public class DelayedBombardment() : CustomCard(2, CardType.Skill, CardRarity.Unc
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<DelayedBombardmentPower>(Owner.Creature, DynamicVars[BombAmountKey].BaseValue,
-            Owner.Creature, this);
+        await CommonActions.ApplySelf<DelayedBombardmentPower>(this, DynamicVars[BombAmountKey].BaseValue);
     }
 
     protected override void OnUpgrade() => DynamicVars[BombAmountKey].UpgradeValueBy(1m);

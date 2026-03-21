@@ -1,5 +1,4 @@
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -26,7 +25,7 @@ public class DoubleSlowBeam() : CustomCard(1, CardType.Skill, CardRarity.Uncommo
 
         foreach (var target in CombatState.HittableEnemies)
         {
-            await PowerCmd.Apply<SlowBeamPower>(target, 1m, Owner.Creature, this);
+            await CommonActions.Apply<SlowBeamPower>(target, this, 1m);
         }
     }
 

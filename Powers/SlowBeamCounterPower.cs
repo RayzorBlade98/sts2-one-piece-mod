@@ -25,6 +25,14 @@ public class SlowBeamCounterPower : CustomPower
             return;
         }
 
+        await ApplyStoredDamage(choiceContext);
+    }
+
+    /**
+     * Damage the owner for the stored damage, then remove this power
+     */
+    public async Task ApplyStoredDamage(PlayerChoiceContext choiceContext)
+    {
         await CreatureCmd.Damage(choiceContext, Owner, Amount, ValueProp.Unblockable | ValueProp.Unpowered, Applier,
             null);
         await PowerCmd.Remove(this);

@@ -37,12 +37,7 @@ public class MegatonKyubiRush() : CustomCard(3, CardType.Attack, CardRarity.Rare
         var hitCount = cardPlay.Target.HasPower<SlowBeamPower>()
             ? DynamicVars[RepeatOnSlowedKey].IntValue
             : DynamicVars.Repeat.IntValue;
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
-            .WithHitCount(hitCount)
-            .FromCard(this)
-            .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_blunt")
-            .Execute(choiceContext);
+        await CommonActions.CardAttack(this, cardPlay, hitCount, "vfx/vfx_attack_blunt").Execute(choiceContext);
     }
 
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(1M);

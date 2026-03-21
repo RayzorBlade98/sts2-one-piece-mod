@@ -2,7 +2,7 @@
   "RAYZORBLADEONEPIECE-DELAYED_BOMBARDMENT_POWER.description": "<RAYZORBLADEONEPIECE-DELAYED_BOMBARDMENT_POWER.description>",
   "RAYZORBLADEONEPIECE-DELAYED_BOMBARDMENT_POWER.smartDescription": "Füge am Ende des gegnerischen Zuges [blue]{Amount}[/blue] mal einem zufälligen Gegner [blue]{Damage:diff()}[/blue] Schaden zu.",
   "RAYZORBLADEONEPIECE-DELAYED_BOMBARDMENT_POWER.title": "Verzögerte Bombardierung",
-  "RAYZORBLADEONEPIECE-SLOW_BEAM_COUNTER_POWER.description": "<RAYZORBLADEONEPIECE-SLOW_BEAM_COUNTER_POWER.description>",
+  "RAYZORBLADEONEPIECE-SLOW_BEAM_COUNTER_POWER.description": "Gespeicherter Schaden wird am Ende des eigenen Zuges zugefügt.",
   "RAYZORBLADEONEPIECE-SLOW_BEAM_COUNTER_POWER.smartDescription": "{OnPlayer:Erhalte am Ende deines Zuges|Erhält am Ende des eigenen Zuges} [blue]{Amount}[/blue] Schaden, dann entfernt sich der komplette [gold]gespeicherte Schaden[/gold].",
   "RAYZORBLADEONEPIECE-SLOW_BEAM_COUNTER_POWER.title": "Gespeicherter Schaden",
   "RAYZORBLADEONEPIECE-SLOW_BEAM_POWER.description": "Verlangsamte Kreaturen fügen mit Angriffen [blue]25%[/blue] weniger Schaden zu. Angriffe gegen verlangsamte Kreaturen fügen zunächst keinen Schaden zu. Stattdessen wird der Schaden gespeichert und am Ende des gegnerischen Zuges mit [blue]50%[/blue] erhöhter Stärke zugefügt.",
