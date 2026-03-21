@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bri6o27ma2crl"
-path="res://.godot/imported/placeholder.png-e4536ddc469b00e44d4344303782a085.ctex"
+uid="uid://b36xpqi0jsebn"
+path="res://.godot/imported/kyubi_rush.png-5c9015bb956e922f16640f4f641ffd34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RayzorBladeOnePiece/images/card_portraits/placeholder.png"
-dest_files=["res://.godot/imported/placeholder.png-e4536ddc469b00e44d4344303782a085.ctex"]
+source_file="res://RayzorBladeOnePiece/images/card_portraits/big/kyubi_rush.png"
+dest_files=["res://.godot/imported/kyubi_rush.png-5c9015bb956e922f16640f4f641ffd34.ctex"]
 
 [params]
 

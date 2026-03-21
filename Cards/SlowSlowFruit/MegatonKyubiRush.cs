@@ -1,0 +1,40 @@
+using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.ValueProps;
+using RayzorBladeOnePiece.Powers;
+
+namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
+
+/**
+ * Deals 3 damage 5 times. If the target has <see cref="SlowBeamPower"/> it hits 9 times instead.
+ * <br />
+ * <b>Upgrade:</b> Increase damage by 1.
+ */
+[Pool(typeof(SlowSlowFruitCardPool))]
+public class MegatonKyubiRush() : CustomCard(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
+{
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(3M, ValueProp.Move)];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SlowBeamPower>()];
+
+    protected override bool ShouldGlowGoldInternal =>
+        CombatState != null && CombatState.HittableEnemies.Any(e => e.HasPower<SlowBeamPower>());
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+        var hitCount = cardPlay.Target.HasPower<SlowBeamPower>() ? 9 : 5;
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
+            .WithHitCount(hitCount)
+            .FromCard(this)
+            .Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_blunt")
+            .Execute(choiceContext);
+    }
+
+    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(1M);
+}
