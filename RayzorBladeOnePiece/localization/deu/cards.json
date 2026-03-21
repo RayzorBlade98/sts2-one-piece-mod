@@ -1,4 +1,6 @@
 ﻿{
-  "RAYZORBLADEONEPIECE-SLOW_BEAM.description": "Wende [gold]Slow Beam'ed[/gold] an.",
+  "RAYZORBLADEONEPIECE-KYUBI_RUSH.description": "Füge einem Gegner 5 Mal {Damage:diff()} Schaden zu. Trifft 9 Mal, falls der Gegner [gold]Slow Beamed[/gold] ist.",
+  "RAYZORBLADEONEPIECE-KYUBI_RUSH.title": "Kyubi Ansturm",
+  "RAYZORBLADEONEPIECE-SLOW_BEAM.description": "Wende [gold]Slow Beamed[/gold] an.",
   "RAYZORBLADEONEPIECE-SLOW_BEAM.title": "Slow Beam"
 }
