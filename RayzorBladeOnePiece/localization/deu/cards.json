@@ -1,6 +1,8 @@
 ﻿{
   "RAYZORBLADEONEPIECE-DELAYED_BOMBARDMENT.description": "Füge am Ende des gegnerischen Zuges {BombAmount:diff()} mal einem zufälligen Gegner {BombDamage:diff()} Schaden zu.",
   "RAYZORBLADEONEPIECE-DELAYED_BOMBARDMENT.title": "Verzögerte Bombardierung",
+  "RAYZORBLADEONEPIECE-DOUBLE_SLOW_BEAM.description": "Wende [gold]Slow Beamed[/gold] auf ALLE Gegner an.",
+  "RAYZORBLADEONEPIECE-DOUBLE_SLOW_BEAM.title": "Doppelter Slow Beam",
   "RAYZORBLADEONEPIECE-KYUBI_RUSH.description": "Füge einem Gegner {Repeat:diff()} Mal {Damage:diff()} Schaden zu. Trifft {RepeatOnSlowed:diff()} Mal, falls der Gegner [gold]Slow Beamed[/gold] ist.",
   "RAYZORBLADEONEPIECE-KYUBI_RUSH.title": "Kyubi Ansturm",
   "RAYZORBLADEONEPIECE-MEGATON_KYUBI_RUSH.description": "Füge einem Gegner {Repeat:diff()} Mal {Damage:diff()} Schaden zu. Trifft {RepeatOnSlowed:diff()} Mal, falls der Gegner [gold]Slow Beamed[/gold] ist.",

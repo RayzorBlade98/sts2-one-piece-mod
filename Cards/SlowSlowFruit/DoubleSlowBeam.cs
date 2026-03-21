@@ -1,0 +1,34 @@
+using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using RayzorBladeOnePiece.Powers;
+
+namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
+
+/**
+ * Apply <see cref="SlowBeamPower"/> to all enemies
+ * <br />
+ * <b>Upgrade:</b> Add retain.
+ */
+[Pool(typeof(SlowSlowFruitCardPool))]
+public class DoubleSlowBeam() : CustomCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AllEnemies)
+{
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SlowBeamPower>()];
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (CombatState is null)
+        {
+            return;
+        }
+
+        foreach (var target in CombatState.HittableEnemies)
+        {
+            await PowerCmd.Apply<SlowBeamPower>(target, 1m, Owner.Creature, this);
+        }
+    }
+
+    protected override void OnUpgrade() => AddKeyword(CardKeyword.Retain);
+}
