@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace RayzorBladeOnePiece.Powers;
@@ -55,13 +56,20 @@ public class SlowBeamPower : CustomPower
         Creature? dealer,
         CardModel? cardSource)
     {
-        if (target != Owner || cardSource is null)
+        if (target != Owner || cardSource is null || amount <= 0M)
         {
             return amount;
         }
         
         var storedDamage = amount * DynamicVars[StoredDamageIncreaseKey].BaseValue;
         PowerCmd.Apply<SlowBeamCounterPower>(target, storedDamage, Applier, cardSource);
+        
+        // Handle slippery power (decrement slippery after storing damage)
+        var slipperyPower = Owner.GetPower<SlipperyPower>();
+        if (slipperyPower is not null)
+        {
+            PowerCmd.Decrement(slipperyPower);
+        }
         
         return 0M;
     }
