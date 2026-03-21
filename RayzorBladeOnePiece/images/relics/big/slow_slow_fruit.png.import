@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x487xrvmo7ow"
-path="res://.godot/imported/slow_beam_power.png-7f980a3e5e54fe39af42e77e747c97c0.ctex"
+uid="uid://b6ghvw7q76cg6"
+path="res://.godot/imported/slow_slow_fruit.png-9b904ec085aeae75d85de8f8a7dee9d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RayzorBladeOnePiece/images/powers/big/slow_beam_power.png"
-dest_files=["res://.godot/imported/slow_beam_power.png-7f980a3e5e54fe39af42e77e747c97c0.ctex"]
+source_file="res://RayzorBladeOnePiece/images/relics/big/slow_slow_fruit.png"
+dest_files=["res://.godot/imported/slow_slow_fruit.png-9b904ec085aeae75d85de8f8a7dee9d6.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x487xrvmo7ow"
-path="res://.godot/imported/slow_beam_power.png-7f980a3e5e54fe39af42e77e747c97c0.ctex"
+uid="uid://bci1lpuovfe71"
+path="res://.godot/imported/placeholder_outline.png-9c549231c60074db619667ac7ed316cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RayzorBladeOnePiece/images/powers/big/slow_beam_power.png"
-dest_files=["res://.godot/imported/slow_beam_power.png-7f980a3e5e54fe39af42e77e747c97c0.ctex"]
+source_file="res://RayzorBladeOnePiece/images/relics/placeholder_outline.png"
+dest_files=["res://.godot/imported/placeholder_outline.png-9c549231c60074db619667ac7ed316cd.ctex"]
 
 [params]
 
