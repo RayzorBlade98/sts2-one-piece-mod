@@ -9,6 +9,8 @@
   "RAYZORBLADEONEPIECE-MASHI_MASHI_SLOW_BEAM.title": "Mashi Mashi Slow Beam",
   "RAYZORBLADEONEPIECE-MEGATON_KYUBI_RUSH.description": "Füge einem Gegner {Repeat:diff()} Mal {Damage:diff()} Schaden zu. Trifft {RepeatOnSlowed:diff()} Mal, falls der Gegner [gold]Slow Beamed[/gold] ist.",
   "RAYZORBLADEONEPIECE-MEGATON_KYUBI_RUSH.title": "Megatonnen Kyubi Ansturm",
+  "RAYZORBLADEONEPIECE-RUST_FORM.description": "Wenn du von einem Angriff getroffen wirst, wende [blue]{RustAmount}[/blue] [gold]Rostig[/gold] an.",
+  "RAYZORBLADEONEPIECE-RUST_FORM.title": "Rostform",
   "RAYZORBLADEONEPIECE-RUSTY_TOUCH.description": "Entferne allen [blue]Block[/blue] von einem Gegner. Falls er keinen [blue]Block[/blue] hat, wende [gold]Rostig[/gold] an. {IfUpgraded:show:Wende 2 [gold]Gebrechlich[/gold] an.}",
   "RAYZORBLADEONEPIECE-RUSTY_TOUCH.title": "Rostige Berührung",
   "RAYZORBLADEONEPIECE-SLOW_BEAM.description": "Wende [gold]Slow Beamed[/gold] an.",
