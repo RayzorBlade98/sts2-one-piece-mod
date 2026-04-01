@@ -19,6 +19,10 @@
   "RAYZORBLADEONEPIECE-SLOW_BEAM.title": "Slow Beam",
   "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.description": "Wende [gold]Slow Beamed[/gold] an. Füge {Damage:diff()} Schaden zu. Falls der Gegner bereits [gold]Slow Beamed[/gold] ist, entferne es und löse den [gold]gespeicherten Schaden[/gold] aus.",
   "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.title": "Slow Beam Schwert",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_KATANA.description": "Füge ALLEN Gegnern {Damage:diff()} Schaden zu.",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_KATANA.title": "Wapometall Katana",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_KNUCKLES.description": "Füge {Damage:diff()} Schaden zu.\nErhalte [gold]Block[/gold] in Höhe des zugefügten Schadens.",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_KNUCKLES.title": "Wapometall Schlagring",
   "RAYZORBLADEONEPIECE-WAPO_METAL_MACHINE_GUN.description": "Füge X Mal einem zufälligen Gegner {Damage:diff()} Schaden zu.",
   "RAYZORBLADEONEPIECE-WAPO_METAL_MACHINE_GUN.title": "Wapometall Maschinengewehr"
 }
