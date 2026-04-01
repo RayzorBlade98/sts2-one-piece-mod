@@ -9,6 +9,8 @@
   "RAYZORBLADEONEPIECE-MASHI_MASHI_SLOW_BEAM.title": "Mashi Mashi Slow Beam",
   "RAYZORBLADEONEPIECE-MEGATON_KYUBI_RUSH.description": "Füge einem Gegner {Repeat:diff()} Mal {Damage:diff()} Schaden zu. Trifft {RepeatOnSlowed:diff()} Mal, falls der Gegner [gold]Slow Beamed[/gold] ist.",
   "RAYZORBLADEONEPIECE-MEGATON_KYUBI_RUSH.title": "Megatonnen Kyubi Ansturm",
+  "RAYZORBLADEONEPIECE-MUNCH.description": "Füge {Damage:diff()} Schaden zu. Erhalte eine zufällige {IfUpgraded:show:verbesserte }[gold]Wapometall[/gold] Karte auf deine [gold]Hand[/gold].",
+  "RAYZORBLADEONEPIECE-MUNCH.title": "Mampfen",
   "RAYZORBLADEONEPIECE-RUST_FORM.description": "Wenn du von einem Angriff getroffen wirst, wende [blue]{RustAmount}[/blue] [gold]Rostig[/gold] an.",
   "RAYZORBLADEONEPIECE-RUST_FORM.title": "Rostform",
   "RAYZORBLADEONEPIECE-RUSTY_TOUCH.description": "Entferne allen [blue]Block[/blue] von einem Gegner. Falls er keinen [blue]Block[/blue] hat, wende [gold]Rostig[/gold] an. {IfUpgraded:show:Wende 2 [gold]Gebrechlich[/gold] an.}",
@@ -16,5 +18,7 @@
   "RAYZORBLADEONEPIECE-SLOW_BEAM.description": "Wende [gold]Slow Beamed[/gold] an.",
   "RAYZORBLADEONEPIECE-SLOW_BEAM.title": "Slow Beam",
   "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.description": "Wende [gold]Slow Beamed[/gold] an. Füge {Damage:diff()} Schaden zu. Falls der Gegner bereits [gold]Slow Beamed[/gold] ist, entferne es und löse den [gold]gespeicherten Schaden[/gold] aus.",
-  "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.title": "Slow Beam Schwert"
+  "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.title": "Slow Beam Schwert",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_MACHINE_GUN.description": "Füge X Mal einem zufälligen Gegner {Damage:diff()} Schaden zu.",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_MACHINE_GUN.title": "Wapometall Maschinengewehr"
 }
