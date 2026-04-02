@@ -26,5 +26,8 @@
   "RAYZORBLADEONEPIECE-WAPO_METAL_LASER.description": "Füge Schaden zu in Höhe der Zahl von Karten in deinem [gold]Deck[/gold].{InCombat:\n({CalculatedDamage:diff()} Schaden)|}",
   "RAYZORBLADEONEPIECE-WAPO_METAL_LASER.title": "Wapometall Laser",
   "RAYZORBLADEONEPIECE-WAPO_METAL_MACHINE_GUN.description": "Füge X Mal einem zufälligen Gegner {Damage:diff()} Schaden zu.",
-  "RAYZORBLADEONEPIECE-WAPO_METAL_MACHINE_GUN.title": "Wapometall Maschinengewehr"
+  "RAYZORBLADEONEPIECE-WAPO_METAL_MACHINE_GUN.title": "Wapometall Maschinengewehr",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_SEEKING_MISSILE.description": "Füge {Damage:diff()} Schaden zu.\nWähle 1 Karte aus deinem [gold]Nachziehstapel[/gold], die du auf deine [gold]Hand[/gold] nimmst.",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_SEEKING_MISSILE.title": "Wapometall Suchrakete",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_SEEKING_MISSILE.selectionScreenPrompt": "Wähle eine Karte, die du auf deine Hand nimmst."
 }
