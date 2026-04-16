@@ -19,6 +19,8 @@
   "RAYZORBLADEONEPIECE-SLOW_BEAM.title": "Slow Beam",
   "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.description": "Wende [gold]Slow Beamed[/gold] an. Füge {Damage:diff()} Schaden zu. Falls der Gegner bereits [gold]Slow Beamed[/gold] ist, entferne es und löse den [gold]gespeicherten Schaden[/gold] aus.",
   "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.title": "Slow Beam Schwert",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_BROADSWORD.description": "Füge {Damage:diff()} Schaden zu.",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_BROADSWORD.title": "Wapometall Breitschwert",
   "RAYZORBLADEONEPIECE-WAPO_METAL_HATCHET.description": "Füge {Damage:diff()} Schaden zu.\nNimm diese Karte zu Beginn deines nächsten Zuges zurück auf deine [gold]Hand[/gold].",
   "RAYZORBLADEONEPIECE-WAPO_METAL_HATCHET.title": "Wapometall Boomerang-Axt",
   "RAYZORBLADEONEPIECE-WAPO_METAL_KATANA.description": "Füge ALLEN Gegnern {Damage:diff()} Schaden zu.",
@@ -32,8 +34,6 @@
   "RAYZORBLADEONEPIECE-WAPO_METAL_SEEKING_MISSILE.description": "Füge {Damage:diff()} Schaden zu.\nWähle 1 Karte aus deinem [gold]Nachziehstapel[/gold], die du auf deine [gold]Hand[/gold] nimmst.",
   "RAYZORBLADEONEPIECE-WAPO_METAL_SEEKING_MISSILE.title": "Wapometall Suchrakete",
   "RAYZORBLADEONEPIECE-WAPO_METAL_SEEKING_MISSILE.selectionScreenPrompt": "Wähle eine Karte, die du auf deine Hand nimmst.",
-  "RAYZORBLADEONEPIECE-WAPO_METAL_BROADSWORD.title": "Wapometall Breitschwert",
-  "RAYZORBLADEONEPIECE-WAPO_METAL_BROADSWORD.description": "Füge {Damage:diff()} Schaden zu.",
-  "RAYZORBLADEONEPIECE-WAPO_METAL_SHACKLES.title": "Wapometall Fesseln",
-  "RAYZORBLADEONEPIECE-WAPO_METAL_SHACKLES.description": "ALLE Gegner verlieren für diesen Zug {StrengthLoss:diff()} [gold]Stärke[/gold]."
+  "RAYZORBLADEONEPIECE-WAPO_METAL_SHACKLES.description": "ALLE Gegner verlieren für diesen Zug {StrengthLoss:diff()} [gold]Stärke[/gold].",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_SHACKLES.title": "Wapometall Fesseln"
 }
