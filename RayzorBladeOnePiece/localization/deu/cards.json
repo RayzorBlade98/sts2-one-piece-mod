@@ -31,5 +31,7 @@
   "RAYZORBLADEONEPIECE-WAPO_METAL_MACHINE_GUN.title": "Wapometall Maschinengewehr",
   "RAYZORBLADEONEPIECE-WAPO_METAL_SEEKING_MISSILE.description": "Füge {Damage:diff()} Schaden zu.\nWähle 1 Karte aus deinem [gold]Nachziehstapel[/gold], die du auf deine [gold]Hand[/gold] nimmst.",
   "RAYZORBLADEONEPIECE-WAPO_METAL_SEEKING_MISSILE.title": "Wapometall Suchrakete",
-  "RAYZORBLADEONEPIECE-WAPO_METAL_SEEKING_MISSILE.selectionScreenPrompt": "Wähle eine Karte, die du auf deine Hand nimmst."
+  "RAYZORBLADEONEPIECE-WAPO_METAL_SEEKING_MISSILE.selectionScreenPrompt": "Wähle eine Karte, die du auf deine Hand nimmst.",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_BROADSWORD.title": "Wapometall Breitschwert",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_BROADSWORD.description": "Füge {Damage:diff()} Schaden zu."
 }
