@@ -21,6 +21,8 @@
   "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.title": "Slow Beam Schwert",
   "RAYZORBLADEONEPIECE-WAPO_METAL_BROADSWORD.description": "Füge {Damage:diff()} Schaden zu.",
   "RAYZORBLADEONEPIECE-WAPO_METAL_BROADSWORD.title": "Wapometall Breitschwert",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_EMERGENCY_SHIELD.description": "Erhalte {Block:diff()} [gold]Block[/gold].\nDu kannst für {Turns:diff()} {Turns:plural:Zug|Züge} keinen [gold]Block[/gold] von Karten erhalten.",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_EMERGENCY_SHIELD.title": "Wapometall Notfallschild",
   "RAYZORBLADEONEPIECE-WAPO_METAL_HATCHET.description": "Füge {Damage:diff()} Schaden zu.\nNimm diese Karte zu Beginn deines nächsten Zuges zurück auf deine [gold]Hand[/gold].",
   "RAYZORBLADEONEPIECE-WAPO_METAL_HATCHET.title": "Wapometall Boomerang-Axt",
   "RAYZORBLADEONEPIECE-WAPO_METAL_KATANA.description": "Füge ALLEN Gegnern {Damage:diff()} Schaden zu.",

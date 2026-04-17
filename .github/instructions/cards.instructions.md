@@ -80,11 +80,6 @@ await CommonActions.ApplySelf<MyPower>(this, DynamicVars["Amount"].BaseValue);
 await CreatureCmd.LoseBlock(cardPlay.Target, cardPlay.Target.Block);
 ```
 
-**Gain block (fixed):**
-```csharp
-await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.BaseValue, ValueProp.Move, cardPlay);
-```
-
 **Block equal to damage dealt:**
 ```csharp
 public override bool GainsBlock => true;  // declare this property
@@ -92,6 +87,11 @@ public override bool GainsBlock => true;  // declare this property
 var result = await CommonActions.CardAttack(this, cardPlay, vfx: "vfx/vfx_attack_blunt").Execute(choiceContext);
 var blockAmount = result.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
 await CreatureCmd.GainBlock(Owner.Creature, blockAmount, ValueProp.Move, cardPlay);
+```
+
+**Gain fixed block:**
+```csharp
+await CommonActions.CardBlock(this, cardPlay);
 ```
 
 **Remove a power from enemy:**
