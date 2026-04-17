@@ -21,7 +21,7 @@ public class SlowBeamCounterPower : CustomPower
     {
         return
         [
-            new HealthBarForecastSegment(Amount, new Color(0.74F, 0.37F, 0.72F), HealthBarForecastDirection.FromRight)
+            new HealthBarForecastSegment(Amount, new Color("c466be"), HealthBarForecastDirection.FromRight)
         ];
     }
 
