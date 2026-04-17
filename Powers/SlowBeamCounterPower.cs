@@ -1,3 +1,5 @@
+using BaseLib.Hooks;
+using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -14,6 +16,14 @@ public class SlowBeamCounterPower : CustomPower
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
+
+    public override IEnumerable<HealthBarForecastSegment> GetHealthBarForecastSegments(HealthBarForecastContext context)
+    {
+        return
+        [
+            new HealthBarForecastSegment(Amount, new Color(0.74F, 0.37F, 0.72F), HealthBarForecastDirection.FromRight)
+        ];
+    }
 
     /**
      * Damage the owner for the stored damage at the end of its turn, then remove this power
