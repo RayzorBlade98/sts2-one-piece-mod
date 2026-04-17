@@ -24,13 +24,14 @@ Valid `rarity` values: `Common`, `Uncommon`, `Rare`, `Token`, `Curse`.
 
 Declare all numeric values in `CanonicalVars` — never hard-code values in `OnPlay`.
 
-| Type | Usage |
-|------|-------|
-| `new DamageVar(5M, ValueProp.Move)` | Standard scaled attack damage |
-| `new RepeatVar(3)` | Hit count (`DynamicVars.Repeat.IntValue`) |
-| `new BlockVar(8M, ValueProp.Move)` | Block amount |
+| Type | Usage                                                |
+|------|------------------------------------------------------|
+| `new DamageVar(5M, ValueProp.Move)` | Standard scaled attack damage                        |
+| `new RepeatVar(3)` | Hit count (`DynamicVars.Repeat.IntValue`)            |
+| `new BlockVar(8M, ValueProp.Move)` | Block amount                                         |
+| `new EnergyVar(3M)` | Energy gain (`DynamicVars.Energy.BaseValue`)               |
 | `new("MyKey", 2M)` | Custom named var — access via `DynamicVars["MyKey"]` |
-| `new CalculationBaseVar(0M)` + `new ExtraDamageVar(1M)` + `new CalculatedDamageVar(ValueProp.Move).WithMultiplier(...)` | Equation-based damage (e.g. scales with deck size) |
+| `new CalculationBaseVar(0M)` + `new ExtraDamageVar(1M)` + `new CalculatedDamageVar(ValueProp.Move).WithMultiplier(...)` | Equation-based damage (e.g. scales with deck size)   |
 
 Access helpers: `DynamicVars.Damage`, `DynamicVars.Repeat`, `DynamicVars.Block`.  
 Use `.IntValue` for counts, `.BaseValue` for decimals.
@@ -91,7 +92,12 @@ await CreatureCmd.GainBlock(Owner.Creature, blockAmount, ValueProp.Move, cardPla
 
 **Gain fixed block:**
 ```csharp
-await CommonActions.CardBlock(this, cardPlay);
+await CommonActions.CardBlock(this, cardPlay).Execute(choiceContext);
+```
+
+**Gain energy:**
+```csharp
+await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
 ```
 
 **Remove a power from enemy:**

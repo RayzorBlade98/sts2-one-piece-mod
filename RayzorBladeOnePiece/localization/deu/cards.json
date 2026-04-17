@@ -19,6 +19,8 @@
   "RAYZORBLADEONEPIECE-SLOW_BEAM.title": "Slow Beam",
   "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.description": "Wende [gold]Slow Beamed[/gold] an. Füge {Damage:diff()} Schaden zu. Falls der Gegner bereits [gold]Slow Beamed[/gold] ist, entferne es und löse den [gold]gespeicherten Schaden[/gold] aus.",
   "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.title": "Slow Beam Schwert",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_BATTERY.description": "Erhalte {Energy:energyIcons()}.",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_BATTERY.title": "Wapometall Batterie",
   "RAYZORBLADEONEPIECE-WAPO_METAL_BROADSWORD.description": "Füge {Damage:diff()} Schaden zu.",
   "RAYZORBLADEONEPIECE-WAPO_METAL_BROADSWORD.title": "Wapometall Breitschwert",
   "RAYZORBLADEONEPIECE-WAPO_METAL_EMERGENCY_SHIELD.description": "Erhalte {Block:diff()} [gold]Block[/gold].\nDu kannst für {Turns:diff()} {Turns:plural:Zug|Züge} keinen [gold]Block[/gold] von Karten erhalten.",
