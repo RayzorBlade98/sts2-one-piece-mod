@@ -92,7 +92,7 @@ await CreatureCmd.GainBlock(Owner.Creature, blockAmount, ValueProp.Move, cardPla
 
 **Gain fixed block:**
 ```csharp
-await CommonActions.CardBlock(this, cardPlay).Execute(choiceContext);
+await CommonActions.CardBlock(this, cardPlay);
 ```
 
 **Gain energy:**

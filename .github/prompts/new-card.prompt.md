@@ -33,10 +33,10 @@ Create a new card for the RayzorBlade OnePiece mod. Follow [copilot-instructions
    - Add `ExtraHoverTips` for any powers the card references
    - **Do not** create `.import` files
 
-3. **Add localization** — append the new key pair to `RayzorBladeOnePiece/localization/deu/cards.json`:
+3. **Add localization** — add the new key pair to `RayzorBladeOnePiece/localization/deu/cards.json`:
    - `"RAYZORBLADEONEPIECE-<SCREAMING_SNAKE_ID>.title"` — German card name
    - `"RAYZORBLADEONEPIECE-<SCREAMING_SNAKE_ID>.description"` — German description using `{VarName:diff()}` for upgradeable vars, `[gold]keyword[/gold]`, `[blue]value[/blue]`, `{IfUpgraded:show:text}`
-   - **After adding, sort all keys in the file in ascending order.**
+   - **Add the new keys in ascending order into the already sorted file**
 
 4. **Copy placeholder portraits** — derive `<id>` from the card class name (PascalCase → screaming_snake → lowercase, e.g. `WapoMetalBroadsword` → `wapo_metal_broadsword`). Run these two commands:
    ```powershell

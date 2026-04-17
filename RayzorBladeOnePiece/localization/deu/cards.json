@@ -39,5 +39,7 @@
   "RAYZORBLADEONEPIECE-WAPO_METAL_SEEKING_MISSILE.title": "Wapometall Suchrakete",
   "RAYZORBLADEONEPIECE-WAPO_METAL_SEEKING_MISSILE.selectionScreenPrompt": "Wähle eine Karte, die du auf deine Hand nimmst.",
   "RAYZORBLADEONEPIECE-WAPO_METAL_SHACKLES.description": "ALLE Gegner verlieren für diesen Zug {StrengthLoss:diff()} [gold]Stärke[/gold].",
-  "RAYZORBLADEONEPIECE-WAPO_METAL_SHACKLES.title": "Wapometall Fesseln"
+  "RAYZORBLADEONEPIECE-WAPO_METAL_SHACKLES.title": "Wapometall Fesseln",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_SHIELD.description": "Erhalte {Block:diff()} [gold]Block[/gold].",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_SHIELD.title": "Wapometall Schild"
 }
