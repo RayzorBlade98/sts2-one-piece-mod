@@ -7,8 +7,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit.WapoMetal;
 
-[Pool(typeof(WapoMetalCardPool))]
-public class WapoMetalEmergencyShield() : CustomCard(0, CardType.Skill, CardRarity.Token, TargetType.Self)
+public class WapoMetalEmergencyShield() : WapoMetalCard(0, CardType.Skill, TargetType.Self)
 {
     private const string TurnsKey = "Turns";
 

@@ -1,14 +1,12 @@
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using RayzorBladeOnePiece.Powers;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit.WapoMetal;
 
-[Pool(typeof(WapoMetalCardPool))]
-public class WapoMetalBomb() : CustomCard(2, CardType.Skill, CardRarity.Token, TargetType.Self)
+public class WapoMetalBomb() : WapoMetalCard(2, CardType.Skill, TargetType.Self)
 {
     private const string TurnsKey = "Turns";
     private const string BombDamageKey = "BombDamage";

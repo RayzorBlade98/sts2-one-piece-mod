@@ -8,8 +8,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit.WapoMetal;
 
-[Pool(typeof(WapoMetalCardPool))]
-public class WapoMetalEmp() : CustomCard(2, CardType.Skill, CardRarity.Token, TargetType.AllEnemies)
+public class WapoMetalEmp() : WapoMetalCard(2, CardType.Skill, TargetType.AllEnemies)
 {
     private const string AmountKey = "Amount";
 

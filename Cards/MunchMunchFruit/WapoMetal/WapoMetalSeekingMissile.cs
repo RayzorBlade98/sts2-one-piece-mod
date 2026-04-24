@@ -7,8 +7,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit.WapoMetal;
 
-[Pool(typeof(WapoMetalCardPool))]
-public class WapoMetalSeekingMissile(): CustomCard(1, CardType.Attack, CardRarity.Token, TargetType.AnyEnemy)
+public class WapoMetalSeekingMissile(): WapoMetalCard(1, CardType.Attack, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(10M, ValueProp.Move)];
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];

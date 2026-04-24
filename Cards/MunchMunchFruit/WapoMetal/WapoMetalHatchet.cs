@@ -10,8 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit.WapoMetal;
 
-[Pool(typeof(WapoMetalCardPool))]
-public class WapoMetalHatchet() : CustomCard(1, CardType.Attack, CardRarity.Token, TargetType.AnyEnemy)
+public class WapoMetalHatchet() : WapoMetalCard(1, CardType.Attack, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(14M, ValueProp.Move)];
 

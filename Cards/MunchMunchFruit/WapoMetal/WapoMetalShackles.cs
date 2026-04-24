@@ -9,8 +9,7 @@ using RayzorBladeOnePiece.Powers;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit.WapoMetal;
 
-[Pool(typeof(WapoMetalCardPool))]
-public class WapoMetalShackles() : CustomCard(0, CardType.Skill, CardRarity.Token, TargetType.AllEnemies)
+public class WapoMetalShackles() : WapoMetalCard(0, CardType.Skill, TargetType.AllEnemies)
 {
     private const string StrengthLossKey = "StrengthLoss";
 

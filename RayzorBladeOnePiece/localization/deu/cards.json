@@ -21,6 +21,8 @@
   "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.title": "Slow Beam Schwert",
   "RAYZORBLADEONEPIECE-WAPO_METAL_BATTERY.description": "Erhalte {Energy:energyIcons()}.",
   "RAYZORBLADEONEPIECE-WAPO_METAL_BATTERY.title": "Wapometall Batterie",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_AXE.description": "Füge Schaden in Höhe der Anzahl in diesem Kampf gespielter Karten zu.{IfUpgraded:show:\n[gold]Wapometall[/gold] Karten zählen als {WapoMetalMultiplier:diff()}.}{InCombat:\n({CalculatedDamage:diff()} Schaden)|}",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_AXE.title": "Wapometall Axt",
   "RAYZORBLADEONEPIECE-WAPO_METAL_BOLAS.description": "Füge {Damage:diff()} Schaden zu.\nNimm diese Karte zu Beginn deines nächsten Zuges zurück auf deine [gold]Hand[/gold].",
   "RAYZORBLADEONEPIECE-WAPO_METAL_BOLAS.title": "Wapometall Bolas",
   "RAYZORBLADEONEPIECE-WAPO_METAL_BOMB.description": "Am Ende von {Turns:diff()} {Turns:plural:Zug|Zügen} füge ALLEN Gegnern {BombDamage:diff()} Schaden zu.",

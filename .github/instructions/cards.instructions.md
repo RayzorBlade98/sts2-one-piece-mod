@@ -129,6 +129,24 @@ protected override IEnumerable<DynamicVar> CanonicalVars =>
 ];
 ```
 
+**Equation-based damage (scales with cards played this combat, with tag-weighted upgrade):**
+```csharp
+new CalculatedDamageVar(ValueProp.Move).WithMultiplier(CalculateDamageMultiplier)
+
+private static decimal CalculateDamageMultiplier(CardModel card, Creature? _)
+{
+    return CombatManager.Instance.History.CardPlaysFinished.Aggregate(0M, (sum, entry) =>
+    {
+        if (entry.CardPlay.Card.Owner != card.Owner) return sum;
+        if (!card.IsUpgraded) return sum + 1;
+        var increase = entry.CardPlay.Card.Tags.Contains(WapoMetalTags.WapoMetal)
+            ? card.DynamicVars["MyMultiplierKey"].BaseValue
+            : 1;
+        return sum + increase;
+    });
+}
+```
+
 **Energy-X card:**
 ```csharp
 protected override bool HasEnergyCostX => true;
@@ -137,6 +155,8 @@ await CommonActions.CardAttack(this, cardPlay, ResolveEnergyXValue(), "vfx/vfx_a
 ```
 
 ## Keywords & Hover Tips
+
+Valid keywords include: `CardKeyword.Exhaust`, `CardKeyword.Retain`.
 
 ```csharp
 public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
@@ -183,6 +203,26 @@ public override async Task BeforeHandDraw(Player player, PlayerChoiceContext cho
 
 Sub-set cards use a child pool (`WapoMetalCardPool`) in a subfolder and are typically `Token` rarity. They are generated into the player's hand during combat by a parent card or utility method (see `MunchMunchActions`).
 
+WapoMetal cards inherit the `WapoMetalCard` abstract base instead of `CustomCard` directly — it provides `[Pool(typeof(WapoMetalCardPool))]`, `CardRarity.Token`, and the `WapoMetal` tag automatically:
+```csharp
+public class WapoMetalAxe() : WapoMetalCard(1, CardType.Attack, TargetType.AnyEnemy) { ... }
+```
+
+## Card Tags
+
+Custom tags are declared with `[CustomEnum]` and referenced in `CanonicalTags`:
+```csharp
+// Definition (in a static utility class):
+[CustomEnum("WapoMetal")]
+public static CardTag WapoMetal;
+
+// Usage on a card:
+protected override HashSet<CardTag> CanonicalTags => [WapoMetalTags.WapoMetal];
+
+// Checking in multipliers / conditions:
+entry.CardPlay.Card.Tags.Contains(WapoMetalTags.WapoMetal)
+```
+
 ## Namespace Convention
 
 `RayzorBladeOnePiece.Cards.<FruitName>` (e.g. `RayzorBladeOnePiece.Cards.SlowSlowFruit`).  
@@ -192,4 +232,4 @@ Sub-sets: `RayzorBladeOnePiece.Cards.<FruitName>.<SubSet>`.
 
 - Hard-code numeric values in `OnPlay` — always use `DynamicVars`
 - Create `.import` files — Godot generates these automatically
-- Invent VFX path strings — use `"vfx/vfx_attack_blunt"` or `"vfx/vfx_attack_slash"` as the closest match
+- Invent VFX path strings — known valid paths: `"vfx/vfx_attack_blunt"`, `"vfx/vfx_attack_slash"`, `"vfx/vfx_dramatic_stab"`

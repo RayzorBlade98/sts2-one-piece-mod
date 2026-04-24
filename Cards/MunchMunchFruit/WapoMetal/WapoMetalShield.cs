@@ -6,8 +6,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit.WapoMetal;
 
-[Pool(typeof(WapoMetalCardPool))]
-public class WapoMetalShield() : CustomCard(1, CardType.Skill, CardRarity.Token, TargetType.Self)
+public class WapoMetalShield() : WapoMetalCard(1, CardType.Skill, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(15M, ValueProp.Move)];
 

@@ -9,9 +9,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit.WapoMetal;
-
-[Pool(typeof(WapoMetalCardPool))]
-public class WapoMetalBolas() : CustomCard(0, CardType.Attack, CardRarity.Token, TargetType.AnyEnemy)
+public class WapoMetalBolas() : WapoMetalCard(0, CardType.Attack, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4M, ValueProp.Move)];
 

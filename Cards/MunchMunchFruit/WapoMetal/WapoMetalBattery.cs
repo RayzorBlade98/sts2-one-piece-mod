@@ -1,4 +1,3 @@
-using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -6,8 +5,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit.WapoMetal;
 
-[Pool(typeof(WapoMetalCardPool))]
-public class WapoMetalBattery() : CustomCard(0, CardType.Skill, CardRarity.Token, TargetType.Self)
+public class WapoMetalBattery() : WapoMetalCard(0, CardType.Skill, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(3)];
 

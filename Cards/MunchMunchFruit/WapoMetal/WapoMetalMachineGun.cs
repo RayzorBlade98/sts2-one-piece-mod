@@ -6,8 +6,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit.WapoMetal;
 
-[Pool(typeof(WapoMetalCardPool))]
-public class WapoMetalMachineGun() : CustomCard(0, CardType.Attack, CardRarity.Token, TargetType.RandomEnemy)
+public class WapoMetalMachineGun() : WapoMetalCard(0, CardType.Attack, TargetType.RandomEnemy)
 {
     protected override bool HasEnergyCostX => true;
 
