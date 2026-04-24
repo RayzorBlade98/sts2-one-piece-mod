@@ -30,6 +30,7 @@ Declare all numeric values in `CanonicalVars` — never hard-code values in `OnP
 | `new RepeatVar(3)` | Hit count (`DynamicVars.Repeat.IntValue`)            |
 | `new BlockVar(8M, ValueProp.Move)` | Block amount                                         |
 | `new EnergyVar(3M)` | Energy gain (`DynamicVars.Energy.BaseValue`)               |
+| `new PowerVar<MyPower>(5M)` | Amount for a specific power — key is `nameof(MyPower)`, access via `DynamicVars[nameof(MyPower)]` |
 | `new("MyKey", 2M)` | Custom named var — access via `DynamicVars["MyKey"]` |
 | `new CalculationBaseVar(0M)` + `new ExtraDamageVar(1M)` + `new CalculatedDamageVar(ValueProp.Move).WithMultiplier(...)` | Equation-based damage (e.g. scales with deck size)   |
 
@@ -161,11 +162,15 @@ Valid keywords include: `CardKeyword.Exhaust`, `CardKeyword.Retain`.
 ```csharp
 public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<MyPower>()];
+// Static hover tip for a built-in game concept (e.g. Block, Strength):
+protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Block)];
 // Conditional hover tips:
 protected override IEnumerable<IHoverTip> ExtraHoverTips => IsUpgraded
     ? [HoverTipFactory.FromPower<PowerA>(), HoverTipFactory.FromPower<PowerB>()]
     : [HoverTipFactory.FromPower<PowerA>()];
 ```
+
+`HoverTipFactory.Static` requires `using MegaCrit.Sts2.Core.HoverTips;`.
 
 ## Glow Gold
 
