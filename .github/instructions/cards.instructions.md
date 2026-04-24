@@ -76,6 +76,12 @@ await CommonActions.Apply<MyPower>(cardPlay.Target, this, 1m);
 await CommonActions.ApplySelf<MyPower>(this, DynamicVars["Amount"].BaseValue);
 ```
 
+**Apply instanced power then call a typed method on it:**
+```csharp
+var power = await CommonActions.ApplySelf<MyInstancedPower>(this, DynamicVars["Amount"].BaseValue);
+power?.MyTypedMethod(DynamicVars["SomeKey"].BaseValue);
+```
+
 **Remove enemy block:**
 ```csharp
 await CreatureCmd.LoseBlock(cardPlay.Target, cardPlay.Target.Block);

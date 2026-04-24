@@ -17,6 +17,18 @@ public class MyPower : CustomPower
 
 Auto-discovery registers powers — no manual entry required.
 
+### Instanced Powers
+
+Add `public override bool IsInstanced => true;` when each application of the power must carry its own independent state (e.g. a separate damage value per stack). Without this flag all stacks share a single instance.
+
+```csharp
+public class MyPower : CustomPower
+{
+    public override bool IsInstanced => true;
+    // ...
+}
+```
+
 ## DynamicVar Types
 
 Declare all numeric values in `CanonicalVars`. The `Amount` property is a shorthand for the current stack count of `Counter` powers.
@@ -29,6 +41,12 @@ Declare all numeric values in `CanonicalVars`. The `Amount` property is a shorth
 
 Access: `DynamicVars["MyKey"].BaseValue` (decimal), `DynamicVars["MyKey"].IntValue` (integer).
 
+`BaseValue` is settable — use a public method to inject a value at apply-time when the power is `IsInstanced`:
+
+```csharp
+public void SetDamage(decimal damage) => DynamicVars.Damage.BaseValue = damage;
+```
+
 ## Override Hooks
 
 | Hook | Signature | Typical use |
@@ -38,6 +56,7 @@ Access: `DynamicVars["MyKey"].BaseValue` (decimal), `DynamicVars["MyKey"].IntVal
 | `ModifyHpLostAfterOstyLate` | Same signature → `decimal` | Modify final HP lost after all defenses. Return `0M` to cancel damage and redirect it. |
 | `BeforeDamageReceived` | `async Task(PlayerChoiceContext, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)` | React before damage hits (e.g. apply counter-power to dealer). |
 | `BeforeDamageDealt` | `async Task(PlayerChoiceContext, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)` | React before damage is dealt from the owner. |
+| `BeforeTurnEnd` | `async Task(PlayerChoiceContext, CombatSide side)` | Trigger before a turn ends. Compare `side` to `Owner.Side` to target the right turn. |
 | `AfterTurnEnd` | `async Task(PlayerChoiceContext, CombatSide side)` | Trigger at end of a turn. Compare `side` to `Owner.Side` to target the right turn. |
 | `BeforeHandDraw` | `async Task(Player player, PlayerChoiceContext, CombatState)` | Trigger before the hand is drawn each turn. |
 | `GetHealthBarForecastSegments` | `IEnumerable<HealthBarForecastSegment>(HealthBarForecastContext)` | Add colored forecast segments to the creature's health bar. |
@@ -104,6 +123,28 @@ public override decimal ModifyHpLostAfterOstyLate(
 }
 ```
 
+### BeforeTurnEnd — Countdown and Detonate
+
+Use `BeforeTurnEnd` when an effect should fire **before** the turn ends (e.g. a bomb that counts down). The same `side` guard rules apply as for `AfterTurnEnd`.
+
+```csharp
+public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+{
+    if (side != Owner.Side) return;
+
+    if (Amount > 1)
+    {
+        await PowerCmd.Decrement(this); // self-decrement (awaitable)
+        return;
+    }
+
+    Flash();
+    await Cmd.CustomScaledWait(0.2f, 0.4f);
+    // ... detonate
+    await PowerCmd.Remove(this);
+}
+```
+
 ### AfterTurnEnd — Deal Damage and Remove
 
 ```csharp
@@ -147,8 +188,10 @@ public override IEnumerable<HealthBarForecastSegment> GetHealthBarForecastSegmen
 | `await PowerCmd.Apply<T>(target, amount, applier, cardSource)` | Apply a power asynchronously |
 | `PowerCmd.Apply<T>(target, amount, applier, cardSource)` | Apply a power fire-and-forget (inside synchronous hooks) |
 | `await PowerCmd.Remove(this)` | Remove this power |
-| `PowerCmd.Decrement(power)` | Decrement another power's stack count |
+| `PowerCmd.Decrement(power)` | Decrement another power's stack count (fire-and-forget) |
+| `await PowerCmd.Decrement(this)` | Self-decrement (awaitable; use inside async hooks) |
 | `await CreatureCmd.Damage(choiceContext, target, DynamicVars.Damage, Owner)` | Deal damage from a power |
+| `await CreatureCmd.Damage(choiceContext, CombatState.HittableEnemies, DynamicVars.Damage, Owner)` | Deal damage to all hittable enemies at once (pass collection instead of single target) |
 | `await CreatureCmd.Damage(choiceContext, target, amount, ValueProp.Unblockable \| ValueProp.Unpowered, Applier, null)` | Deal unblockable unpowered damage |
 | `await Cmd.CustomScaledWait(0.2f, 0.4f)` | Wait a short time (for VFX pacing) |
 

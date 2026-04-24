@@ -21,6 +21,8 @@
   "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.title": "Slow Beam Schwert",
   "RAYZORBLADEONEPIECE-WAPO_METAL_BATTERY.description": "Erhalte {Energy:energyIcons()}.",
   "RAYZORBLADEONEPIECE-WAPO_METAL_BATTERY.title": "Wapometall Batterie",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_BOMB.description": "Am Ende von {Turns:diff()} {Turns:plural:Zug|Zügen} füge ALLEN Gegnern {BombDamage:diff()} Schaden zu.",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_BOMB.title": "Wapometall Bombe",
   "RAYZORBLADEONEPIECE-WAPO_METAL_BROADSWORD.description": "Füge {Damage:diff()} Schaden zu.",
   "RAYZORBLADEONEPIECE-WAPO_METAL_BROADSWORD.title": "Wapometall Breitschwert",
   "RAYZORBLADEONEPIECE-WAPO_METAL_EMERGENCY_SHIELD.description": "Erhalte {Block:diff()} [gold]Block[/gold].\nDu kannst für {Turns:diff()} {Turns:plural:Zug|Züge} keinen [gold]Block[/gold] von Karten erhalten.",

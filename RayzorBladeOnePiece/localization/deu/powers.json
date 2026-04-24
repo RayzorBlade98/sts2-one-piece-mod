@@ -13,5 +13,8 @@
   "RAYZORBLADEONEPIECE-SLOW_BEAM_COUNTER_POWER.title": "Gespeicherter Schaden",
   "RAYZORBLADEONEPIECE-SLOW_BEAM_POWER.description": "Verlangsamte Kreaturen fügen mit Angriffen [blue]25%[/blue] weniger Schaden zu. Angriffe gegen verlangsamte Kreaturen fügen zunächst keinen Schaden zu. Stattdessen wird der Schaden gespeichert und am Ende des gegnerischen Zuges mit [blue]50%[/blue] erhöhter Stärke zugefügt.",
   "RAYZORBLADEONEPIECE-SLOW_BEAM_POWER.smartDescription": "Angriffe fügen [blue]25%[/blue] weniger Schaden zu. Erhaltener Schaden durch Angriffe wird nicht sofort hinzugefügt, sondern gespeichert und am Ende des eigenen Zuges mit [blue]50%[/blue] erhöhter Stärke zugefügt.",
-  "RAYZORBLADEONEPIECE-SLOW_BEAM_POWER.title": "Slow Beamed"
+  "RAYZORBLADEONEPIECE-SLOW_BEAM_POWER.title": "Slow Beamed",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_BOMB_POWER.description": "<RAYZORBLADEONEPIECE-WAPO_METAL_BOMB_POWER.description>",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_BOMB_POWER.smartDescription": "Füge ALLEN Gegnern am Ende {Amount:plural:dieses Zuges|von [blue]{}[/blue] Zügen} [blue]{Damage}[/blue] Schaden zu.",
+  "RAYZORBLADEONEPIECE-WAPO_METAL_BOMB_POWER.title": "Wapometall Bombe"
 }
