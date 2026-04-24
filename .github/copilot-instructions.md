@@ -53,16 +53,7 @@ Cards inherit `CustomCard`, are decorated with `[Pool(typeof(<FruitCardPool>))]`
 
 ## Power Conventions
 
-```csharp
-public class MyPower : CustomPower
-{
-    public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Counter;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new("Amount", 1M)];
-}
-```
-
-Override hooks: `ModifyDamageMultiplicative`, `ModifyDamageAdditive`, `BeforeDamageReceived`, `BeforeDamageDealt`, `AfterTurnEnd`, `BeforeHandDraw`. See [SlowBeamPower.cs](../Powers/SlowBeamPower.cs), [RustPower.cs](../Powers/RustPower.cs), [DelayedBombardmentPower.cs](../Powers/DelayedBombardmentPower.cs) for representative examples.
+Powers inherit `CustomPower` and live in `Powers/`. See [powers.instructions.md](instructions/powers.instructions.md) for the full API: DynamicVar types, override hooks, helper commands, hover tips, localization patterns, and health bar forecasts.
 
 ## Relic Conventions
 
