@@ -119,6 +119,19 @@ if (card is not null)
     await CardPileCmd.Add(card, PileType.Hand);
 ```
 
+**Select a card from hand (e.g. to transform it):**
+```csharp
+var prefs = new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 1);
+var card = (await CardSelectCmd.FromHand(choiceContext, Owner, prefs, null, this)).FirstOrDefault();
+if (card is null) return;
+```
+
+**Transform a card into another:**
+```csharp
+var newCard = /* create the replacement card */;
+await CardCmd.Transform(cardToTransform, newCard);
+```
+
 **Equation-based damage (scales with deck size):**
 ```csharp
 protected override IEnumerable<DynamicVar> CanonicalVars =>

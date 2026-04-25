@@ -11,6 +11,8 @@
   "RAYZORBLADEONEPIECE-MEGATON_KYUBI_RUSH.title": "Megatonnen Kyubi Ansturm",
   "RAYZORBLADEONEPIECE-MUNCH.description": "Füge {Damage:diff()} Schaden zu. Erhalte eine zufällige {IfUpgraded:show:verbesserte }[gold]Wapometall[/gold] Karte auf deine [gold]Hand[/gold].",
   "RAYZORBLADEONEPIECE-MUNCH.title": "Mampfen",
+  "RAYZORBLADEONEPIECE-MUNCH_MUNCH_FACTORY.description": "Wähle eine [gold]Handkarte[/gold], die du zu einer zufälligen {IfUpgraded:show:verbesserten }[gold]Wapometall[/gold] Karte [gold]Transformierst[/gold].",
+  "RAYZORBLADEONEPIECE-MUNCH_MUNCH_FACTORY.title": "Mampf-Mampf Fabrik",
   "RAYZORBLADEONEPIECE-RUST_FORM.description": "Wenn du von einem Angriff getroffen wirst, wende [blue]{RustAmount}[/blue] [gold]Rostig[/gold] an.",
   "RAYZORBLADEONEPIECE-RUST_FORM.title": "Rostform",
   "RAYZORBLADEONEPIECE-RUSTY_TOUCH.description": "Entferne allen [blue]Block[/blue] von einem Gegner. Falls er keinen [blue]Block[/blue] hat, wende [gold]Rostig[/gold] an. {IfUpgraded:show:Wende 2 [gold]Gebrechlich[/gold] an.}",

@@ -8,5 +8,5 @@ namespace RayzorBladeOnePiece.Cards.MunchMunchFruit.WapoMetal;
 public abstract class WapoMetalCard(int baseCost, CardType type, TargetType target)
     : CustomCard(baseCost, type, CardRarity.Token, target)
 {
-    protected override HashSet<CardTag> CanonicalTags => [WapoMetalTags.WapoMetal];
+    protected override HashSet<CardTag> CanonicalTags => [MunchMunchTags.WapoMetal];
 }

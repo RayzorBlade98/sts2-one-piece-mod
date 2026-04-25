@@ -1,4 +1,5 @@
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -15,6 +16,7 @@ public class Munch() : CustomCard(1, CardType.Attack, CardRarity.Common, TargetT
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CommonActions.CardAttack(this, cardPlay).Execute(choiceContext);
-        await MunchMunchActions.CreateWapoMetalCards(Owner, isUpgraded: IsUpgraded);
+        var createdCards = MunchMunchActions.CreateWapoMetalCards(Owner, isUpgraded: IsUpgraded);
+        await CardPileCmd.AddGeneratedCardsToCombat(createdCards, PileType.Hand, true);
     }
 }

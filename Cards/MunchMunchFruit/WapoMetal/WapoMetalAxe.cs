@@ -45,7 +45,7 @@ public class WapoMetalAxe() : WapoMetalCard(1, CardType.Attack, TargetType.AnyEn
                 return sum + 1;
             }
 
-            var increase = entry.CardPlay.Card.Tags.Contains(WapoMetalTags.WapoMetal)
+            var increase = entry.CardPlay.Card.Tags.Contains(MunchMunchTags.WapoMetal)
                 ? card.DynamicVars[WapoMetalMultiplierKey].BaseValue
                 : 1;
             return sum + increase;

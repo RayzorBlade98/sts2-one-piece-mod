@@ -1,5 +1,4 @@
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.Models;
@@ -9,7 +8,12 @@ namespace RayzorBladeOnePiece.Cards.MunchMunchFruit.Utils;
 
 public static class MunchMunchActions
 {
-    public static async Task CreateWapoMetalCards(Player player, int amount = 1, bool isUpgraded = false)
+    public static CardModel CreateWapoMetalCard(Player player, bool isUpgraded = false)
+    {
+        return CreateWapoMetalCards(player, 1, isUpgraded).Single();
+    }
+
+    public static List<CardModel> CreateWapoMetalCards(Player player, int amount = 1, bool isUpgraded = false)
     {
         var possibleCards = ModelDb.CardPool<WapoMetalCardPool>()
             .GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint);
@@ -22,6 +26,6 @@ public static class MunchMunchActions
             cards.ForEach(card => CardCmd.Upgrade(card));
         }
 
-        await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Hand, true);
+        return cards;
     }
 }
