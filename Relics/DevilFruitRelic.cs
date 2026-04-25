@@ -2,10 +2,8 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.RelicPools;
-using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Runs;
 
 namespace RayzorBladeOnePiece.Relics;
@@ -33,6 +31,11 @@ public abstract class DevilFruitRelic<TCardPool> : CustomRelic where TCardPool :
         var newCards = ModelDb.CardPool<TCardPool>()
             .GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint)
             .Where(card => !allCards.Contains(card));
+
+        if (options.CardPoolFilter is not null)
+        {
+            newCards = newCards.Where(options.CardPoolFilter);
+        }
 
         if (options.Flags.HasFlag(CardCreationFlags.NoRarityModification))
         {
