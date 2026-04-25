@@ -1,4 +1,6 @@
 ﻿{
+  "RAYZORBLADEONEPIECE-BERO_CANNON.description": "[gold]Erschöpfe[/gold] {ExhaustCount:diff} zufällige {ExhaustCount:plural:Karte|Karten}.\nFalls du dies tust, füge {Damage:diff()} Schaden zu.",
+  "RAYZORBLADEONEPIECE-BERO_CANNON.title": "Bero Kanone",
   "RAYZORBLADEONEPIECE-DELAYED_BOMBARDMENT.description": "Füge am Ende des gegnerischen Zuges {BombAmount:diff()} mal einem zufälligen Gegner {BombDamage:diff()} Schaden zu.",
   "RAYZORBLADEONEPIECE-DELAYED_BOMBARDMENT.title": "Verzögerte Bombardierung",
   "RAYZORBLADEONEPIECE-DOUBLE_SLOW_BEAM.description": "Wende [gold]Slow Beamed[/gold] auf ALLE Gegner an.",

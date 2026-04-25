@@ -112,6 +112,17 @@ await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
 await PowerCmd.Remove<MyPower>(cardPlay.Target);
 ```
 
+**Exhaust a random card from hand (and deal damage if one was exhausted):**
+```csharp
+var pile = PileType.Hand.GetPile(Owner);
+var card = Owner.RunState.Rng.CombatCardSelection.NextItem(pile.Cards);
+if (card is not null)
+{
+    await CardCmd.Exhaust(choiceContext, card);
+    await CommonActions.CardAttack(this, cardPlay, vfx: "vfx/vfx_attack_blunt").Execute(choiceContext);
+}
+```
+
 **Select a card from a pile:**
 ```csharp
 var card = await CommonActions.SelectSingleCard(this, SelectionScreenPrompt, choiceContext, PileType.Draw);
