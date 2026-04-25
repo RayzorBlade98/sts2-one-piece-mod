@@ -13,6 +13,8 @@
   "RAYZORBLADEONEPIECE-MUNCH.title": "Mampfen",
   "RAYZORBLADEONEPIECE-MUNCH_MUNCH_FACTORY.description": "Wähle eine [gold]Handkarte[/gold], die du zu einer zufälligen {IfUpgraded:show:verbesserten }[gold]Wapometall[/gold] Karte [gold]Transformierst[/gold].",
   "RAYZORBLADEONEPIECE-MUNCH_MUNCH_FACTORY.title": "Mampf-Mampf Fabrik",
+  "RAYZORBLADEONEPIECE-MUNCH_MUNCH_FORM.description": "[gold]Transformiere[/gold] immer zu Beginn deines Zuges eine [gold]Handkarte[/gold] in eine zufällige {IfUpgraded:show:verbesserte }[gold]Wapometall[/gold] Karte.",
+  "RAYZORBLADEONEPIECE-MUNCH_MUNCH_FORM.title": "Mampf-Mampf Form",
   "RAYZORBLADEONEPIECE-RUST_FORM.description": "Wenn du von einem Angriff getroffen wirst, wende [blue]{RustAmount}[/blue] [gold]Rostig[/gold] an.",
   "RAYZORBLADEONEPIECE-RUST_FORM.title": "Rostform",
   "RAYZORBLADEONEPIECE-RUSTY_TOUCH.description": "Entferne allen [blue]Block[/blue] von einem Gegner. Falls er keinen [blue]Block[/blue] hat, wende [gold]Rostig[/gold] an. {IfUpgraded:show:Wende 2 [gold]Gebrechlich[/gold] an.}",

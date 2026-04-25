@@ -37,6 +37,7 @@ Declare all numeric values in `CanonicalVars`. The `Amount` property is a shorth
 |------|-------|
 | `new("MyKey", 2M)` | Custom named var — access via `DynamicVars["MyKey"].BaseValue` |
 | `new DamageVar(10M, ValueProp.Unpowered)` | Damage value scaled to combat stats |
+| `new BoolVar("MyKey", false)` | Boolean var — access via `((BoolVar)DynamicVars["MyKey"]).BoolVal` |
 | `Amount` | Shorthand for current stack count (only valid on `Counter` powers) |
 
 Access: `DynamicVars["MyKey"].BaseValue` (decimal), `DynamicVars["MyKey"].IntValue` (integer).
@@ -58,6 +59,7 @@ public void SetDamage(decimal damage) => DynamicVars.Damage.BaseValue = damage;
 | `BeforeDamageDealt` | `async Task(PlayerChoiceContext, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)` | React before damage is dealt from the owner. |
 | `BeforeTurnEnd` | `async Task(PlayerChoiceContext, CombatSide side)` | Trigger before a turn ends. Compare `side` to `Owner.Side` to target the right turn. |
 | `AfterTurnEnd` | `async Task(PlayerChoiceContext, CombatSide side)` | Trigger at end of a turn. Compare `side` to `Owner.Side` to target the right turn. |
+| `AfterPlayerTurnStart` | `async Task(PlayerChoiceContext, Player player)` | Trigger at the start of the player's turn. Guard with `if (player != Owner.Player) return;`. |
 | `BeforeHandDraw` | `async Task(Player player, PlayerChoiceContext, CombatState)` | Trigger before the hand is drawn each turn. |
 | `GetHealthBarForecastSegments` | `IEnumerable<HealthBarForecastSegment>(HealthBarForecastContext)` | Add colored forecast segments to the creature's health bar. |
 
@@ -175,6 +177,23 @@ public override IEnumerable<HealthBarForecastSegment> GetHealthBarForecastSegmen
 }
 ```
 
+### AfterPlayerTurnStart — Select and Transform a Card
+
+```csharp
+public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
+{
+    if (player != Owner.Player) return;
+
+    var prefs = new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 1);
+    var card = (await CardSelectCmd.FromHand(choiceContext, Owner.Player, prefs, null, this))
+        .FirstOrDefault();
+    if (card is null) return;
+
+    var replacement = Owner.Player.RunState.CreateCard<MyCard>(Owner.Player);
+    await CardCmd.Transform(card, replacement);
+}
+```
+
 ## Helper Methods & Commands
 
 | Expression | Description |
@@ -194,6 +213,8 @@ public override IEnumerable<HealthBarForecastSegment> GetHealthBarForecastSegmen
 | `await CreatureCmd.Damage(choiceContext, CombatState.HittableEnemies, DynamicVars.Damage, Owner)` | Deal damage to all hittable enemies at once (pass collection instead of single target) |
 | `await CreatureCmd.Damage(choiceContext, target, amount, ValueProp.Unblockable \| ValueProp.Unpowered, Applier, null)` | Deal unblockable unpowered damage |
 | `await Cmd.CustomScaledWait(0.2f, 0.4f)` | Wait a short time (for VFX pacing) |
+| `await CardSelectCmd.FromHand(choiceContext, player, prefs, null, this)` | Prompt the player to select cards from their hand |
+| `await CardCmd.Transform(card, replacement)` | Replace a card in-place with another card |
 
 ## Hover Tips
 
