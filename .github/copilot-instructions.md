@@ -57,9 +57,10 @@ Powers inherit `CustomPower` and live in `Powers/`. See [powers.instructions.md]
 
 ## Relic Conventions
 
+Relics inherit `CustomRelic` (or the more common `DevilFruitRelic<TCardPool>`) and live in `Relics/`. See [relics.instructions.md](instructions/relics.instructions.md) for the full API: available hooks, localization patterns, and image conventions.
+
 Devil Fruit relic (most common):
 ```csharp
-[Pool(typeof(SharedRelicPool))]
 public class MyFruitRelic : DevilFruitRelic<MyFruitCardPool>
 {
     public override RelicRarity Rarity => RelicRarity.Uncommon;
