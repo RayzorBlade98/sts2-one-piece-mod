@@ -25,7 +25,7 @@ public class DoubleSlowBeam() : CustomCard(1, CardType.Skill, CardRarity.Uncommo
 
         foreach (var target in CombatState.HittableEnemies)
         {
-            await CommonActions.Apply<SlowBeamPower>(target, this, 1m);
+            await CommonActions.Apply<SlowBeamPower>(choiceContext, target, this, 1m);
         }
     }
 

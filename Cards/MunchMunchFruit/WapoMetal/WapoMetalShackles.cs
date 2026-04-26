@@ -32,7 +32,8 @@ public class WapoMetalShackles() : WapoMetalCard(0, CardType.Skill, TargetType.A
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         foreach (var enemy in CombatState.HittableEnemies)
         {
-            await CommonActions.Apply<WapoMetalShacklesPower>(enemy, this, DynamicVars[StrengthLossKey].BaseValue);
+            await CommonActions.Apply<WapoMetalShacklesPower>(choiceContext, enemy, this,
+                DynamicVars[StrengthLossKey].BaseValue);
         }
     }
 

@@ -1,5 +1,5 @@
 using BaseLib.Extensions;
-using MegaCrit.Sts2.Core.Commands;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -30,6 +30,6 @@ public class RustFormPower : CustomPower
         }
 
         Flash();
-        await PowerCmd.Apply<RustPower>(dealer, Amount, Owner, null);
+        await CommonActions.Apply<RustPower>(choiceContext, dealer, null, Amount);
     }
 }

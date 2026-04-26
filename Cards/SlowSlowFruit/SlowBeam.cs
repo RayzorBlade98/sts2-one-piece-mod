@@ -22,7 +22,7 @@ public class SlowBeam() : CustomCard(0, CardType.Skill, CardRarity.Common, Targe
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await CommonActions.Apply<SlowBeamPower>(cardPlay.Target, this, 1m);
+        await CommonActions.Apply<SlowBeamPower>(choiceContext, cardPlay.Target, this, 1m);
     }
 
     protected override void OnUpgrade() => RemoveKeyword(CardKeyword.Exhaust);

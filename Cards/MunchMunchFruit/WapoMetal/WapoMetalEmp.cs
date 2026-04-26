@@ -34,8 +34,8 @@ public class WapoMetalEmp() : WapoMetalCard(2, CardType.Skill, TargetType.AllEne
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         foreach (var enemy in CombatState.HittableEnemies)
         {
-            await CommonActions.Apply<WeakPower>(enemy, this, DynamicVars[AmountKey].BaseValue);
-            await CommonActions.Apply<VulnerablePower>(enemy, this, DynamicVars[AmountKey].BaseValue);
+            await CommonActions.Apply<WeakPower>(choiceContext, enemy, this, DynamicVars[AmountKey].BaseValue);
+            await CommonActions.Apply<VulnerablePower>(choiceContext, enemy, this, DynamicVars[AmountKey].BaseValue);
         }
     }
 

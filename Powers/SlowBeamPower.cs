@@ -1,4 +1,5 @@
 using BaseLib.Extensions;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -62,7 +63,7 @@ public class SlowBeamPower : CustomPower
         }
         
         var storedDamage = amount * DynamicVars[StoredDamageIncreaseKey].BaseValue;
-        PowerCmd.Apply<SlowBeamCounterPower>(target, storedDamage, Applier, cardSource);
+        CommonActions.Apply<SlowBeamCounterPower>(new ThrowingPlayerChoiceContext(), target, null, storedDamage);
         
         // Handle slippery power (decrement slippery after storing damage)
         var slipperyPower = Owner.GetPower<SlipperyPower>();

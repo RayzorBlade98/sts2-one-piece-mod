@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit.WapoMetal;
+
 public class WapoMetalBolas() : WapoMetalCard(0, CardType.Attack, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4M, ValueProp.Move)];
@@ -25,7 +26,7 @@ public class WapoMetalBolas() : WapoMetalCard(0, CardType.Attack, TargetType.Any
     public override async Task BeforeHandDraw(
         Player player,
         PlayerChoiceContext choiceContext,
-        CombatState combatState)
+        ICombatState combatState)
     {
         if (player != Owner || Pile?.Type == PileType.Hand)
         {
@@ -40,7 +41,7 @@ public class WapoMetalBolas() : WapoMetalCard(0, CardType.Attack, TargetType.Any
 
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(1M);
 
-    private bool WasPlayedLastTurn(CardPlayFinishedEntry entry, CombatState combatState)
+    private bool WasPlayedLastTurn(CardPlayFinishedEntry entry, ICombatState combatState)
     {
         return entry.CardPlay.Card == this && entry.RoundNumber == combatState.RoundNumber - 1;
     }

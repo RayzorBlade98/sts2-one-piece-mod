@@ -13,7 +13,7 @@ public class MunchMunchForm() : CustomCard(2, CardType.Power, CardRarity.Rare, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var power = await CommonActions.ApplySelf<MunchMunchFormPower>(this,
+        var power = await CommonActions.ApplySelf<MunchMunchFormPower>(choiceContext, this,
             DynamicVars[nameof(MunchMunchFormPower)].BaseValue);
         power?.SetIsUpgraded(IsUpgraded);
     }

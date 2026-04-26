@@ -24,12 +24,12 @@ public class RustyTouch() : CustomCard(1, CardType.Skill, CardRarity.Uncommon, T
         }
         else
         {
-            await CommonActions.Apply<RustPower>(cardPlay.Target, this, 1m);
+            await CommonActions.Apply<RustPower>(choiceContext, cardPlay.Target, this, 1m);
         }
 
         if (IsUpgraded)
         {
-            await CommonActions.Apply<FrailPower>(cardPlay.Target, this, 2m);
+            await CommonActions.Apply<FrailPower>(choiceContext, cardPlay.Target, this, 2m);
         }
     }
 }

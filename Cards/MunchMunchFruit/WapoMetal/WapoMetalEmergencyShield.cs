@@ -22,7 +22,7 @@ public class WapoMetalEmergencyShield() : WapoMetalCard(0, CardType.Skill, Targe
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CommonActions.CardBlock(this, cardPlay);
-        await CommonActions.ApplySelf<NoBlockPower>(this, DynamicVars[TurnsKey].IntValue);
+        await CommonActions.ApplySelf<NoBlockPower>(choiceContext, this, DynamicVars[TurnsKey].IntValue);
     }
 
     protected override void OnUpgrade() => DynamicVars.Block.UpgradeValueBy(10M);

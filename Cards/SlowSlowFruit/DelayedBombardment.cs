@@ -25,9 +25,9 @@ public class DelayedBombardment() : CustomCard(2, CardType.Skill, CardRarity.Unc
     ];
 
 
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override async Task OnPlay(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        await CommonActions.ApplySelf<DelayedBombardmentPower>(this, DynamicVars[BombAmountKey].BaseValue);
+        await CommonActions.ApplySelf<DelayedBombardmentPower>(context, this, DynamicVars[BombAmountKey].BaseValue);
     }
 
     protected override void OnUpgrade() => DynamicVars[BombAmountKey].UpgradeValueBy(1m);

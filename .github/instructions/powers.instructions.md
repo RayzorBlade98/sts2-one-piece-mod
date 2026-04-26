@@ -60,7 +60,7 @@ public void SetDamage(decimal damage) => DynamicVars.Damage.BaseValue = damage;
 | `BeforeTurnEnd` | `async Task(PlayerChoiceContext, CombatSide side)` | Trigger before a turn ends. Compare `side` to `Owner.Side` to target the right turn. |
 | `AfterTurnEnd` | `async Task(PlayerChoiceContext, CombatSide side)` | Trigger at end of a turn. Compare `side` to `Owner.Side` to target the right turn. |
 | `AfterPlayerTurnStart` | `async Task(PlayerChoiceContext, Player player)` | Trigger at the start of the player's turn. Guard with `if (player != Owner.Player) return;`. |
-| `BeforeHandDraw` | `async Task(Player player, PlayerChoiceContext, CombatState)` | Trigger before the hand is drawn each turn. |
+| `BeforeHandDraw` | `async Task(Player player, PlayerChoiceContext, ICombatState)` | Trigger before the hand is drawn each turn. |
 | `GetHealthBarForecastSegments` | `IEnumerable<HealthBarForecastSegment>(HealthBarForecastContext)` | Add colored forecast segments to the creature's health bar. |
 
 ### AfterTurnEnd — Side Check Patterns
@@ -107,7 +107,7 @@ public override async Task BeforeDamageReceived(
     if (target != Owner || dealer == null || !props.IsPoweredAttack_()) return;
 
     Flash();
-    await PowerCmd.Apply<CounterPower>(dealer, Amount, Owner, null);
+    await CommonActions.Apply<CounterPower>(choiceContext, dealer, null, Amount);
 }
 ```
 
@@ -120,7 +120,7 @@ public override decimal ModifyHpLostAfterOstyLate(
     if (target != Owner || cardSource is null || amount <= 0M) return amount;
 
     // Redirect to another power instead of dealing HP damage:
-    PowerCmd.Apply<StoragePower>(target, amount * DynamicVars["Multiplier"].BaseValue, Applier, cardSource);
+    CommonActions.Apply<StoragePower>(new ThrowingPlayerChoiceContext(), target, null, amount * DynamicVars["Multiplier"].BaseValue);
     return 0M;
 }
 ```
@@ -204,8 +204,8 @@ public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContex
 | `Owner` | The creature this power is attached to |
 | `Owner.GetPower<T>()` | Get another power from the owner (returns null if absent) |
 | `Owner.HasPower<T>()` | Check whether the owner has a power |
-| `await PowerCmd.Apply<T>(target, amount, applier, cardSource)` | Apply a power asynchronously |
-| `PowerCmd.Apply<T>(target, amount, applier, cardSource)` | Apply a power fire-and-forget (inside synchronous hooks) |
+| `await CommonActions.Apply<T>(choiceContext, target, cardSource, amount)` | Apply a power asynchronously |
+| `CommonActions.Apply<T>(new ThrowingPlayerChoiceContext(), target, null, amount)` | Apply a power fire-and-forget (inside synchronous hooks like `ModifyHpLostAfterOstyLate`) |
 | `await PowerCmd.Remove(this)` | Remove this power |
 | `PowerCmd.Decrement(power)` | Decrement another power's stack count (fire-and-forget) |
 | `await PowerCmd.Decrement(this)` | Self-decrement (awaitable; use inside async hooks) |

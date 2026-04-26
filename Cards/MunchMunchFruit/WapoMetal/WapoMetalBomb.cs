@@ -21,7 +21,8 @@ public class WapoMetalBomb() : WapoMetalCard(2, CardType.Skill, TargetType.Self)
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        var bombPower = await CommonActions.ApplySelf<WapoMetalBombPower>(this, DynamicVars[TurnsKey].BaseValue);
+        var bombPower =
+            await CommonActions.ApplySelf<WapoMetalBombPower>(choiceContext, this, DynamicVars[TurnsKey].BaseValue);
         bombPower?.SetDamage(DynamicVars[BombDamageKey].BaseValue);
     }
 

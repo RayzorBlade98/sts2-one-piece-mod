@@ -29,7 +29,7 @@ public class SlowBeamSword() : CustomCard(1, CardType.Attack, CardRarity.Common,
         var isAlreadySlowed = cardPlay.Target.HasPower<SlowBeamPower>();
         if (!isAlreadySlowed)
         {
-            await CommonActions.Apply<SlowBeamPower>(cardPlay.Target, this, 1m);
+            await CommonActions.Apply<SlowBeamPower>(choiceContext, cardPlay.Target, this, 1m);
         }
 
         await CommonActions.CardAttack(this, cardPlay, vfx: "vfx/vfx_attack_slash").Execute(choiceContext);

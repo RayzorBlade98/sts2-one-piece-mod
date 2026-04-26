@@ -68,18 +68,18 @@ foreach (var enemy in CombatState.HittableEnemies)
 **All enemies (apply power):**
 ```csharp
 foreach (var enemy in CombatState.HittableEnemies)
-    await CommonActions.Apply<MyPower>(enemy, this, DynamicVars["Amount"].BaseValue);
+    await CommonActions.Apply<MyPower>(choiceContext, enemy, this, DynamicVars["Amount"].BaseValue);
 ```
 
 **Apply power to enemy / self:**
 ```csharp
-await CommonActions.Apply<MyPower>(cardPlay.Target, this, 1m);
-await CommonActions.ApplySelf<MyPower>(this, DynamicVars["Amount"].BaseValue);
+await CommonActions.Apply<MyPower>(choiceContext, cardPlay.Target, this, 1m);
+await CommonActions.ApplySelf<MyPower>(choiceContext, this, DynamicVars["Amount"].BaseValue);
 ```
 
 **Apply instanced power then call a typed method on it:**
 ```csharp
-var power = await CommonActions.ApplySelf<MyInstancedPower>(this, DynamicVars["Amount"].BaseValue);
+var power = await CommonActions.ApplySelf<MyInstancedPower>(choiceContext, this, DynamicVars["Amount"].BaseValue);
 power?.MyTypedMethod(DynamicVars["SomeKey"].BaseValue);
 ```
 
@@ -121,6 +121,12 @@ if (card is not null)
     await CardCmd.Exhaust(choiceContext, card);
     await CommonActions.CardAttack(this, cardPlay, vfx: "vfx/vfx_attack_blunt").Execute(choiceContext);
 }
+```
+
+**Add generated cards to combat (e.g. create token cards into hand):**
+```csharp
+var cards = MyActions.CreateMyTokenCards(Owner, isUpgraded: IsUpgraded);
+await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Hand, Owner);
 ```
 
 **Select a card from a pile:**
@@ -219,7 +225,7 @@ protected override bool ShouldGlowGoldInternal =>
 
 Override `BeforeHandDraw` and check combat history:
 ```csharp
-public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
+public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
 {
     if (player != Owner || Pile?.Type == PileType.Hand) return;
     if (CombatManager.Instance.History.CardPlaysFinished.Any(e =>

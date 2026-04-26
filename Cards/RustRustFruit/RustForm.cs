@@ -17,7 +17,7 @@ public class RustForm() : CustomCard(3, CardType.Power, CardRarity.Rare, TargetT
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CommonActions.ApplySelf<RustFormPower>(this, DynamicVars[RustAmountKey].BaseValue);
+        await CommonActions.ApplySelf<RustFormPower>(choiceContext, this, DynamicVars[RustAmountKey].BaseValue);
     }
 
     protected override void OnUpgrade() => DynamicVars[RustAmountKey].UpgradeValueBy(1);
