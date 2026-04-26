@@ -6,4 +6,5 @@ public class MunchMunchFruitCardPool : DevilFruitCardPool
 {
     public override string Title => "MunchMunchFruit";
     public override Color DeckEntryCardColor => new("840240");
+    public override Color EnergyOutlineColor => new("3b379e");
 }
