@@ -19,7 +19,7 @@ public class WapoMetalArmorSuit() : WapoMetalCard(3, CardType.Power, TargetType.
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CommonActions.ApplySelf<PlatingPower>(choiceContext, this, DynamicVars[nameof(PlatingPower)].BaseValue);
+        await CommonActions.ApplySelf<PlatingPower>(choiceContext, this);
     }
 
     protected override void OnUpgrade() => DynamicVars[nameof(PlatingPower)].UpgradeValueBy(3M);

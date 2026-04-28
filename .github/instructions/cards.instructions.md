@@ -30,7 +30,7 @@ Declare all numeric values in `CanonicalVars` — never hard-code values in `OnP
 | `new RepeatVar(3)` | Hit count (`DynamicVars.Repeat.IntValue`)            |
 | `new BlockVar(8M, ValueProp.Move)` | Block amount                                         |
 | `new EnergyVar(3M)` | Energy gain (`DynamicVars.Energy.BaseValue`)               |
-| `new PowerVar<MyPower>(5M)` | Amount for a specific power — key is `nameof(MyPower)`, access via `DynamicVars[nameof(MyPower)]` |
+| `new PowerVar<MyPower>(5M)` | Amount for a specific power — key is `nameof(MyPower)`, access via `DynamicVars[nameof(MyPower)]`. When present, `CommonActions.Apply`/`ApplySelf` infers the amount automatically; **omit** the amount argument. |
 | `new("MyKey", 2M)` | Custom named var — access via `DynamicVars["MyKey"]` |
 | `new CalculationBaseVar(0M)` + `new ExtraDamageVar(1M)` + `new CalculatedDamageVar(ValueProp.Move).WithMultiplier(...)` | Equation-based damage (e.g. scales with deck size)   |
 
@@ -71,7 +71,13 @@ foreach (var enemy in CombatState.HittableEnemies)
     await CommonActions.Apply<MyPower>(choiceContext, enemy, this, DynamicVars["Amount"].BaseValue);
 ```
 
-**Apply power to enemy / self:**
+**Apply power to enemy / self (with PowerVar — amount is inferred):**
+```csharp
+await CommonActions.Apply<MyPower>(choiceContext, cardPlay.Target, this);    // PowerVar<MyPower> in CanonicalVars
+await CommonActions.ApplySelf<MyPower>(choiceContext, this);                  // PowerVar<MyPower> in CanonicalVars
+```
+
+**Apply power with explicit amount (no PowerVar, or non-PowerVar source):**
 ```csharp
 await CommonActions.Apply<MyPower>(choiceContext, cardPlay.Target, this, 1m);
 await CommonActions.ApplySelf<MyPower>(choiceContext, this, DynamicVars["Amount"].BaseValue);
@@ -79,7 +85,7 @@ await CommonActions.ApplySelf<MyPower>(choiceContext, this, DynamicVars["Amount"
 
 **Apply instanced power then call a typed method on it:**
 ```csharp
-var power = await CommonActions.ApplySelf<MyInstancedPower>(choiceContext, this, DynamicVars["Amount"].BaseValue);
+var power = await CommonActions.ApplySelf<MyInstancedPower>(choiceContext, this); // PowerVar infers amount
 power?.MyTypedMethod(DynamicVars["SomeKey"].BaseValue);
 ```
 
