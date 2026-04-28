@@ -1,5 +1,5 @@
 ---
-description: "Use when creating, editing, or reviewing power classes in the Powers/ directory. Covers the full power API: Type/StackType, DynamicVar usage, override hooks, helper methods, hover tips, localization patterns, and health bar forecasts."
+description: "Use when creating, editing, or reviewing power classes in the Powers/ directory. Covers the full power API: Type/StackType, DynamicVar usage (including CustomCalculatedVar), override hooks, internal data, helper methods, hover tips, localization patterns, and health bar forecasts."
 applyTo: "Powers/**"
 ---
 
@@ -38,7 +38,30 @@ Declare all numeric values in `CanonicalVars`. The `Amount` property is a shorth
 | `new("MyKey", 2M)` | Custom named var — access via `DynamicVars["MyKey"].BaseValue` |
 | `new DamageVar(10M, ValueProp.Unpowered)` | Damage value scaled to combat stats |
 | `new BoolVar("MyKey", false)` | Boolean var — access via `((BoolVar)DynamicVars["MyKey"]).BoolVal` |
+| `new CustomCalculatedVar("Key").WithMultiplier((power, target) => power.Amount)` | Computed var — value = `Base + Extra * multiplier`; read via `.CalculateOverride(target)` |
+| `new CustomCalculatedDisplayVar<MyPower>("Key", (_, value) => ...)` | Display-only var that formats a `CustomCalculatedVar` result for the UI |
 | `Amount` | Shorthand for current stack count (only valid on `Counter` powers) |
+
+### CustomCalculatedVar — Base / Extra / Calculated Pattern
+
+Use three vars together when a stat scales with the stack count:
+
+```csharp
+private const string MissRateKey = "MissRate";
+
+protected override IEnumerable<DynamicVar> CanonicalVars =>
+[
+    new CustomCalculatedVar(MissRateKey).WithMultiplier((power, _) => power.Amount),
+    new($"{MissRateKey}Base", 0M),      // base addend (usually 0)
+    new($"{MissRateKey}Extra", 0.1M),   // per-stack value
+    new CustomCalculatedDisplayVar<MyPower>(MissRateKey, (_, value) => ((int)(value * 100)).ToString()),
+];
+
+// Read the computed value:
+var missRate = ((CustomCalculatedVar)DynamicVars[MissRateKey]).CalculateOverride(target);
+```
+
+The formula is: `result = Base + Extra * multiplier`. The `CustomCalculatedDisplayVar` is only for display; the `CustomCalculatedVar` holds the actual computed value.
 
 Access: `DynamicVars["MyKey"].BaseValue` (decimal), `DynamicVars["MyKey"].IntValue` (integer).
 
@@ -55,6 +78,9 @@ public void SetDamage(decimal damage) => DynamicVars.Damage.BaseValue = damage;
 | `ModifyDamageMultiplicative` | `(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource) → decimal` | Return a multiplier (e.g. `0.75M` to reduce 25 %). Return `1M` to pass through. |
 | `ModifyDamageAdditive` | Same signature → `decimal` | Return an additive modifier (negative to reduce). Return `0M` to pass through. |
 | `ModifyHpLostAfterOstyLate` | Same signature → `decimal` | Modify final HP lost after all defenses. Return `0M` to cancel damage and redirect it. |
+| `ModifyCardPlayCount` | `int(CardModel card, Creature? target, int playCount)` | Intercept a card's play count before it is played. Return `0` to cancel play. Stash the card in internal data for follow-up hooks. |
+| `AfterModifyingCardPlayCount` | `async Task(CardModel card)` | Fires right after `ModifyCardPlayCount`; use to remove the power when the play was cancelled. |
+| `AfterCardPlayed` | `async Task(PlayerChoiceContext, CardPlay cardPlay)` | Fires after a card is fully played; use as a fallback cleanup when play was NOT cancelled. |
 | `BeforeDamageReceived` | `async Task(PlayerChoiceContext, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)` | React before damage hits (e.g. apply counter-power to dealer). |
 | `BeforeDamageDealt` | `async Task(PlayerChoiceContext, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)` | React before damage is dealt from the owner. |
 | `BeforeTurnEnd` | `async Task(PlayerChoiceContext, CombatSide side)` | Trigger before a turn ends. Compare `side` to `Owner.Side` to target the right turn. |
@@ -177,6 +203,48 @@ public override IEnumerable<HealthBarForecastSegment> GetHealthBarForecastSegmen
 }
 ```
 
+### ModifyCardPlayCount / AfterModifyingCardPlayCount / AfterCardPlayed — Cancel Card Play
+
+Use these three hooks together when a power should cancel a card play (e.g. a miss mechanic) and then remove itself, regardless of whether the play was cancelled or not.
+
+```csharp
+protected override object InitInternalData() => new Data();
+
+public override int ModifyCardPlayCount(CardModel card, Creature? target, int playCount)
+{
+    if (card.Type != CardType.Attack || card.Owner != Owner.Player)
+        return playCount;
+
+    var isMissing = (decimal)Owner.Player.RunState.Rng.Niche.NextDouble() < missRate;
+    GetInternalData<Data>().ModifiedCard = card; // stash for follow-up hooks
+
+    if (!isMissing)
+        return playCount;
+
+    Flash();
+    return 0; // cancel the play
+}
+
+// Fires when play was CANCELLED (playCount returned 0):
+public override async Task AfterModifyingCardPlayCount(CardModel card)
+{
+    if (card != GetInternalData<Data>().ModifiedCard) return;
+    await PowerCmd.Remove<SpringedUpPower>(card.Owner.Creature);
+}
+
+// Fires when play was NOT cancelled:
+public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+{
+    if (cardPlay.Card != GetInternalData<Data>().ModifiedCard) return;
+    await PowerCmd.Remove<SpringedUpPower>(cardPlay.Card.Owner.Creature);
+}
+
+private class Data
+{
+    public CardModel? ModifiedCard;
+}
+```
+
 ### AfterPlayerTurnStart — Select and Transform a Card
 
 ```csharp
@@ -204,9 +272,11 @@ public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContex
 | `Owner` | The creature this power is attached to |
 | `Owner.GetPower<T>()` | Get another power from the owner (returns null if absent) |
 | `Owner.HasPower<T>()` | Check whether the owner has a power |
+| `InitInternalData()` / `GetInternalData<T>()` | Store and retrieve private per-power state (see Internal Data section below) |
 | `await CommonActions.Apply<T>(choiceContext, target, cardSource, amount)` | Apply a power asynchronously |
 | `CommonActions.Apply<T>(new ThrowingPlayerChoiceContext(), target, null, amount)` | Apply a power fire-and-forget (inside synchronous hooks like `ModifyHpLostAfterOstyLate`) |
 | `await PowerCmd.Remove(this)` | Remove this power |
+| `await PowerCmd.Remove<T>(creature)` | Remove a power of type `T` from any creature |
 | `PowerCmd.Decrement(power)` | Decrement another power's stack count (fire-and-forget) |
 | `await PowerCmd.Decrement(this)` | Self-decrement (awaitable; use inside async hooks) |
 | `await CreatureCmd.Damage(choiceContext, target, DynamicVars.Damage, Owner)` | Deal damage from a power |
@@ -215,6 +285,26 @@ public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContex
 | `await Cmd.CustomScaledWait(0.2f, 0.4f)` | Wait a short time (for VFX pacing) |
 | `await CardSelectCmd.FromHand(choiceContext, player, prefs, null, this)` | Prompt the player to select cards from their hand |
 | `await CardCmd.Transform(card, replacement)` | Replace a card in-place with another card |
+| `Owner.Player.RunState.Rng.Niche.NextDouble()` | Get a random double for chance-based effects (cast to `decimal` for comparison) |
+
+## Internal Data
+
+Use `InitInternalData` + `GetInternalData<T>` to attach private state to a power without making fields public. Useful for passing data between hooks (e.g. tracking which card triggered a `ModifyCardPlayCount`).
+
+```csharp
+protected override object InitInternalData() => new Data();
+
+public override int ModifyCardPlayCount(CardModel card, Creature? target, int playCount)
+{
+    GetInternalData<Data>().ModifiedCard = card;
+    // ...
+}
+
+private class Data
+{
+    public CardModel? ModifiedCard;
+}
+```
 
 ## Hover Tips
 

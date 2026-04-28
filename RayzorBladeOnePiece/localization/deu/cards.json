@@ -25,6 +25,8 @@
   "RAYZORBLADEONEPIECE-SLOW_BEAM.title": "Slow Beam",
   "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.description": "Wende [gold]Slow Beamed[/gold] an. Füge {Damage:diff()} Schaden zu. Falls der Gegner bereits [gold]Slow Beamed[/gold] ist, entferne es und löse den [gold]gespeicherten Schaden[/gold] aus.",
   "RAYZORBLADEONEPIECE-SLOW_BEAM_SWORD.title": "Slow Beam Schwert",
+  "RAYZORBLADEONEPIECE-SPRING_UP.description": "Erhalte [blue]{SpringedUpPower:diff()}[/blue] [gold]Aufgefedert[/gold].",
+  "RAYZORBLADEONEPIECE-SPRING_UP.title": "Auffedern",
   "RAYZORBLADEONEPIECE-WAPO_METAL_ARMOR_SUIT.description": "Erhalte {PlatingPower:diff()} [gold]Panzerung[/gold].",
   "RAYZORBLADEONEPIECE-WAPO_METAL_ARMOR_SUIT.title": "Wapometall Rüstungsanzug",
   "RAYZORBLADEONEPIECE-WAPO_METAL_AXE.description": "Füge Schaden in Höhe der Anzahl in diesem Kampf gespielter Karten zu.{IfUpgraded:show:\n[gold]Wapometall[/gold] Karten zählen als {WapoMetalMultiplier:diff()}.}{InCombat:\n({CalculatedDamage:diff()} Schaden)|}",
