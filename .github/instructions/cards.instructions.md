@@ -34,7 +34,7 @@ Declare all numeric values in `CanonicalVars` — never hard-code values in `OnP
 | `new("MyKey", 2M)` | Custom named var — access via `DynamicVars["MyKey"]` |
 | `new CalculationBaseVar(0M)` + `new ExtraDamageVar(1M)` + `new CalculatedDamageVar(ValueProp.Move).WithMultiplier(...)` | Equation-based damage (e.g. scales with deck size)   |
 
-Access helpers: `DynamicVars.Damage`, `DynamicVars.Repeat`, `DynamicVars.Block`.  
+Shorthand accessors: `DynamicVars.Damage`, `DynamicVars.Repeat`, `DynamicVars.Block`, `DynamicVars.ExtraDamage`.  
 Use `.IntValue` for counts, `.BaseValue` for decimals.
 
 ## OnPlay Patterns
@@ -164,6 +164,22 @@ protected override IEnumerable<DynamicVar> CanonicalVars =>
     new CalculatedDamageVar(ValueProp.Move)
         .WithMultiplier((card, _) => PileType.Deck.GetPile(card.Owner).Cards.Count)
 ];
+```
+
+**Equation-based damage (scales with owner's power stack count, upgradeable bonus per stack):**
+```csharp
+protected override IEnumerable<DynamicVar> CanonicalVars =>
+[
+    new CalculationBaseVar(27M),
+    new ExtraDamageVar(3M),
+    new CalculatedDamageVar(ValueProp.Move)
+        .WithMultiplier((card, _) => card.Owner.Creature.GetPower<MyPower>()?.Amount ?? 0M)
+];
+protected override void OnUpgrade() => DynamicVars.ExtraDamage.UpgradeValueBy(2M);
+```
+Formula: `base + extra * multiplier`. Use `DynamicVars.ExtraDamage` as the shorthand for the upgrade. In localization, use `{CalculatedDamage:diff()}` for the total damage shown on the card and `{ExtraDamage:diff()}` for the upgradeable per-stack bonus, e.g.:
+```
+"Füge {CalculatedDamage:diff()} Schaden zu.\nFügt {ExtraDamage:diff()} Schaden mehr für jeden Stapel von [gold]Power[/gold] zu."
 ```
 
 **Equation-based damage (scales with cards played this combat, with tag-weighted upgrade):**
