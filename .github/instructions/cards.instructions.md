@@ -191,6 +191,17 @@ protected override bool HasEnergyCostX => true;
 await CommonActions.CardAttack(this, cardPlay, ResolveEnergyXValue(), "vfx/vfx_attack_slash").Execute(choiceContext);
 ```
 
+**Energy-X card with X+1 upgrade (capture count, bump if upgraded):**
+```csharp
+int count = ResolveEnergyXValue();
+if (IsUpgraded)
+{
+    ++count;
+}
+await CommonActions.ApplySelf<MyPower>(choiceContext, this, count);
+```
+Localization: `"Erhalte X{IfUpgraded:show:+1} [gold]PowerName[/gold]."` — no `OnUpgrade` override needed; the bump is handled in `OnPlay`.
+
 ## Keywords & Hover Tips
 
 Valid keywords include: `CardKeyword.Exhaust`, `CardKeyword.Retain`.
