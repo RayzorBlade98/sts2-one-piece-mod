@@ -26,7 +26,7 @@ public class WapoMetalBolas() : WapoMetalCard(0, CardType.Attack, TargetType.Any
     public override async Task BeforeHandDraw(
         Player player,
         PlayerChoiceContext choiceContext,
-        ICombatState combatState)
+        CombatState combatState)
     {
         if (player != Owner || Pile?.Type == PileType.Hand)
         {
@@ -41,7 +41,7 @@ public class WapoMetalBolas() : WapoMetalCard(0, CardType.Attack, TargetType.Any
 
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(1M);
 
-    private bool WasPlayedLastTurn(CardPlayFinishedEntry entry, ICombatState combatState)
+    private bool WasPlayedLastTurn(CardPlayFinishedEntry entry, CombatState combatState)
     {
         return entry.CardPlay.Card == this && entry.RoundNumber == combatState.RoundNumber - 1;
     }

@@ -17,6 +17,6 @@ public class Munch() : CustomCard(1, CardType.Attack, CardRarity.Common, TargetT
     {
         await CommonActions.CardAttack(this, cardPlay).Execute(choiceContext);
         var createdCards = MunchMunchActions.CreateWapoMetalCards(Owner, isUpgraded: IsUpgraded);
-        await CardPileCmd.AddGeneratedCardsToCombat(createdCards, PileType.Hand, Owner);
+        await CardPileCmd.AddGeneratedCardsToCombat(createdCards, PileType.Hand, true);
     }
 }
