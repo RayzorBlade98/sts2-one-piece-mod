@@ -1,6 +1,7 @@
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
+using RayzorBlade.Sts2.BaseLib;
 
 namespace RayzorBladeOnePiece;
 
@@ -13,6 +14,7 @@ public partial class MainFile : Node
 
     public static void Initialize()
     {
+        ModConfig.ModId = ModId;
         Harmony harmony = new(ModId);
 
         harmony.PatchAll();

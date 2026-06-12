@@ -5,12 +5,13 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using RayzorBlade.Sts2.BaseLib.Models;
 using RayzorBladeOnePiece.Powers;
 
 namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
 
 [Pool(typeof(SlowSlowFruitCardPool))]
-public class SlowBeamSword() : CustomCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class SlowBeamSword() : ModdedCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6M, ValueProp.Move)];
 

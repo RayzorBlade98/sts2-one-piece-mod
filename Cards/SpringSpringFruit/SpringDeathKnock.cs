@@ -5,12 +5,13 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using RayzorBlade.Sts2.BaseLib.Models;
 using RayzorBladeOnePiece.Powers;
 
 namespace RayzorBladeOnePiece.Cards.SpringSpringFruit;
 
 [Pool(typeof(SpringSpringFruitCardPool))]
-public class SpringDeathKnock() : CustomCard(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
+public class SpringDeathKnock() : ModdedCard(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SpringedUpPower>()];
 

@@ -1,10 +1,10 @@
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using RayzorBlade.Sts2.BaseLib.Models;
 using RayzorBladeOnePiece.Powers;
 
 namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
@@ -15,7 +15,7 @@ namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
  * <b>Upgrade:</b> Increase damage by 1.
  */
 [Pool(typeof(SlowSlowFruitCardPool))]
-public class MegatonKyubiRush() : CustomCard(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
+public class MegatonKyubiRush() : ModdedCard(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     private const string RepeatOnSlowedKey = "RepeatOnSlowed";
     

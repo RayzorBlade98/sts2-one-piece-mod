@@ -3,12 +3,13 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using RayzorBlade.Sts2.BaseLib.Models;
 using RayzorBladeOnePiece.Powers;
 
 namespace RayzorBladeOnePiece.Cards.SpringSpringFruit;
 
 [Pool(typeof(SpringSpringFruitCardPool))]
-public class SpringUp() : CustomCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class SpringUp() : ModdedCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SpringedUpPower>()];
 

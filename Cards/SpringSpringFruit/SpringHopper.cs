@@ -2,12 +2,13 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using RayzorBlade.Sts2.BaseLib.Models;
 using RayzorBladeOnePiece.Powers;
 
 namespace RayzorBladeOnePiece.Cards.SpringSpringFruit;
 
 [Pool(typeof(SpringSpringFruitCardPool))]
-public class SpringHopper() : CustomCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
+public class SpringHopper() : ModdedCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     protected override bool HasEnergyCostX => true;
 

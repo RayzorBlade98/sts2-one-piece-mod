@@ -4,12 +4,13 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
+using RayzorBlade.Sts2.BaseLib.Models;
 using RayzorBladeOnePiece.Powers;
 
 namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
 
 [Pool(typeof(SlowSlowFruitCardPool))]
-public class MashiMashiSlowBeam() : CustomCard(3, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy)
+public class MashiMashiSlowBeam() : ModdedCard(3, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy)
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [

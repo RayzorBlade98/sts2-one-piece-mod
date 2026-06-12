@@ -1,8 +1,8 @@
 using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using RayzorBlade.Sts2.BaseLib.Models;
 using RayzorBladeOnePiece.Powers;
 
 namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
@@ -13,7 +13,7 @@ namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
  * <b>Upgrade:</b> Remove exhaust.
  */
 [Pool(typeof(SlowSlowFruitCardPool))]
-public class SlowBeam() : CustomCard(0, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
+public class SlowBeam() : ModdedCard(0, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SlowBeamPower>()];
 

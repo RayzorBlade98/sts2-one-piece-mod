@@ -4,11 +4,12 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using RayzorBlade.Sts2.BaseLib.Models;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit;
 
 [Pool(typeof(MunchMunchFruitCardPool))]
-public class BeroCannon() : CustomCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class BeroCannon() : ModdedCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
     private const string ExhaustCountKey = "ExhaustCount";
 

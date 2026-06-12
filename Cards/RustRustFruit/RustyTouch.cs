@@ -4,12 +4,13 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
+using RayzorBlade.Sts2.BaseLib.Models;
 using RayzorBladeOnePiece.Powers;
 
 namespace RayzorBladeOnePiece.Cards.RustRustFruit;
 
 [Pool(typeof(RustRustFruitCardPool))]
-public class RustyTouch() : CustomCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
+public class RustyTouch() : ModdedCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => IsUpgraded
         ? [HoverTipFactory.FromPower<RustPower>(), HoverTipFactory.FromPower<FrailPower>()]

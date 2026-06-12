@@ -79,6 +79,7 @@
     <ItemGroup>
         <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.2.1" PrivateAssets="All" />
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
+        <PackageReference Include="RayzorBlade.Sts2.BaseLib" Version="0.0.3" />
         <AdditionalFiles Include="RayzorBladeOnePiece/localization/**/*.json"/>
     </ItemGroup>
 
@@ -126,6 +127,10 @@
             <BaseLibFiles Include="$(NuGetPackageRoot)/alchyr.sts2.baselib/**/lib/**/BaseLib.dll;$(NuGetPackageRoot)/alchyr.sts2.baselib/**/Content/BaseLib.pck;$(NuGetPackageRoot)/alchyr.sts2.baselib/**/Content/BaseLib.json;"/>
         </ItemGroup>
         <Copy SourceFiles="@(BaseLibFiles)" DestinationFolder="$(ModsPath)BaseLib/"/>
+        <ItemGroup>
+            <RayzorBladeBaseLibFiles Include="$(NuGetPackageRoot)/RayzorBlade.Sts2.BaseLib/**/lib/**/RayzorBlade.Sts2.BaseLib.dll;$(NuGetPackageRoot)/RayzorBlade.Sts2.BaseLib/**/Content/RayzorBlade.Sts2.BaseLib.json;"/>
+        </ItemGroup>
+        <Copy SourceFiles="@(RayzorBladeBaseLibFiles)" DestinationFolder="$(ModsPath)RayzorBlade.Sts2.BaseLib/"/>
     </Target>
 
     <Target Name="GodotPublish" AfterTargets="Publish" Condition="'$(GodotPath)' != '' and Exists('$(GodotPath)') and '$(IsInnerGodotExport)' != 'true'">

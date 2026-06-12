@@ -2,6 +2,7 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using RayzorBlade.Sts2.BaseLib.Models;
 using RayzorBladeOnePiece.Powers;
 
 namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
@@ -12,7 +13,7 @@ namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
  * <b>Upgrade:</b> Increase the number of times the bomb hits by 1
  */
 [Pool(typeof(SlowSlowFruitCardPool))]
-public class DelayedBombardment() : CustomCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class DelayedBombardment() : ModdedCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     public const decimal BombDamage = 10m;
     private const string BombDamageKey = "BombDamage";

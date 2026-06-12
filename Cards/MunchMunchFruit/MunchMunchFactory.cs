@@ -3,12 +3,13 @@ using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using RayzorBlade.Sts2.BaseLib.Models;
 using RayzorBladeOnePiece.Cards.MunchMunchFruit.Utils;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit;
 
 [Pool(typeof(MunchMunchFruitCardPool))]
-public class MunchMunchFactory() : CustomCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class MunchMunchFactory() : ModdedCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
