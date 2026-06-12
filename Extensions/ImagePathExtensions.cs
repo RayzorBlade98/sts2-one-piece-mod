@@ -3,14 +3,8 @@ namespace RayzorBladeOnePiece.Extensions;
 public static class ImagePathExtensions
 {
     private static string ImagePath => Path.Join(MainFile.ModId, "images");
-    private static string EnergyPath => Path.Join(ImagePath, "energy");
     private static string PowerPath => Path.Join(ImagePath, "powers");
     private static string RelicPath => Path.Join(ImagePath, "relics");
-    
-    public static string ToBigEnergyIconPath(this string path)
-    {
-        return Path.Join(EnergyPath, path);
-    }
 
     public static string ToPowerImagePath(this string path)
     {

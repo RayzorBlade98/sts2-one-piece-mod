@@ -79,7 +79,7 @@
     <ItemGroup>
         <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.2.1" PrivateAssets="All" />
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
-        <PackageReference Include="RayzorBlade.Sts2.BaseLib" Version="0.0.3" />
+        <PackageReference Include="RayzorBlade.Sts2.BaseLib" Version="0.0.4" />
         <AdditionalFiles Include="RayzorBladeOnePiece/localization/**/*.json"/>
     </ItemGroup>
 
