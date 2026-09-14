@@ -4,7 +4,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
-using RayzorBlade.Sts2.BaseLib.Models;
 using RayzorBladeOnePiece.Powers;
 
 namespace RayzorBladeOnePiece.Cards.RustRustFruit;
@@ -21,7 +20,7 @@ public class RustyTouch() : ModdedCard(1, CardType.Skill, CardRarity.Uncommon, T
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         if (cardPlay.Target.Block > 0)
         {
-            await CreatureCmd.LoseBlock(cardPlay.Target, cardPlay.Target.Block);
+            await CreatureCmd.LoseBlock(choiceContext, cardPlay.Target, cardPlay.Target.Block, Owner.Creature);
         }
         else
         {

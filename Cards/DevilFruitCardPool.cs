@@ -1,5 +1,3 @@
-using RayzorBlade.Sts2.BaseLib.Models;
-
 namespace RayzorBladeOnePiece.Cards;
 
 public abstract class DevilFruitCardPool : ModdedCardPool

@@ -43,7 +43,9 @@ public abstract class DevilFruitRelic<TCardPool> : CustomRelic where TCardPool :
             newCards = newCards.Where(c => allowedRarities.Contains(c.Rarity));
         }
 
-        return options.WithCustomPool(allCards.Concat(newCards));
+        return options;
+        // todo: fix
+        // return options.WithCustomPool(allCards.Concat(newCards));
     }
 
     /**

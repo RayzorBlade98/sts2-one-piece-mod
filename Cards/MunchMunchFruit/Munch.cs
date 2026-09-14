@@ -4,7 +4,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
-using RayzorBlade.Sts2.BaseLib.Models;
 using RayzorBladeOnePiece.Cards.MunchMunchFruit.Utils;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit;
@@ -18,6 +17,6 @@ public class Munch() : ModdedCard(1, CardType.Attack, CardRarity.Common, TargetT
     {
         await CommonActions.CardAttack(this, cardPlay).Execute(choiceContext);
         var createdCards = MunchMunchActions.CreateWapoMetalCards(Owner, isUpgraded: IsUpgraded);
-        await CardPileCmd.AddGeneratedCardsToCombat(createdCards, PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardsToCombat(createdCards, PileType.Hand, Owner);
     }
 }

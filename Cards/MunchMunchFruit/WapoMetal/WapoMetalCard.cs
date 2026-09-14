@@ -1,6 +1,5 @@
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using RayzorBlade.Sts2.BaseLib.Models;
 using RayzorBladeOnePiece.Cards.MunchMunchFruit.Utils;
 
 namespace RayzorBladeOnePiece.Cards.MunchMunchFruit.WapoMetal;

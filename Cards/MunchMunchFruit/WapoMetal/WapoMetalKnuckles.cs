@@ -20,7 +20,7 @@ public class WapoMetalKnuckles() : WapoMetalCard(1, CardType.Attack, TargetType.
             .CardAttack(this, cardPlay, vfx: "vfx/vfx_attack_blunt")
             .Execute(choiceContext);
 
-        var blockAmount = attackCommand.Results.Sum(r => r.TotalDamage + r.OverkillDamage);
+        var blockAmount = attackCommand.Results.SelectMany(r => r).Sum(r => r.TotalDamage + r.OverkillDamage);
         await CreatureCmd.GainBlock(Owner.Creature, blockAmount, ValueProp.Move, cardPlay);
     }
 
