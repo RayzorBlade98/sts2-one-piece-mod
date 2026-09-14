@@ -1,6 +1,5 @@
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -28,23 +27,17 @@ public class WapoMetalHatchet() : WapoMetalCard(1, CardType.Attack, TargetType.A
         PlayerChoiceContext choiceContext,
         ICombatState combatState)
     {
-        if (player != Owner || Pile?.Type == PileType.Hand)
+        if (player != Owner || Pile is { Type: PileType.Hand })
         {
             return;
         }
 
-        if (CombatManager.Instance.History.CardPlaysFinished.Any(entry => WasPlayedLastTurn(entry, combatState)))
+        if (CombatManager.Instance.History.CardPlaysFinished.Any(e =>
+                e.HappenedLastPlayerTurn(Owner) && e.CardPlay.Card == this))
         {
             await CardPileCmd.Add(this, PileType.Hand);
         }
     }
 
     protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(3M);
-
-    private bool WasPlayedLastTurn(CardPlayFinishedEntry entry, ICombatState combatState)
-    {
-        return false;
-        // todo: fix
-        // return entry.CardPlay.Card == this && entry.RoundNumber == combatState.RoundNumber - 1;
-    }
 }
