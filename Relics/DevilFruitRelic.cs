@@ -22,30 +22,30 @@ public abstract class DevilFruitRelic<TCardPool> : CustomRelic where TCardPool :
      */
     public override CardCreationOptions ModifyCardRewardCreationOptions(Player player, CardCreationOptions options)
     {
-        if (Owner != player || options.Flags.HasFlag(CardCreationFlags.NoCardPoolModifications))
+        if (Owner != player || options.Flags.HasFlag(CardCreationFlags.NoCardPoolModifications) ||
+            !options.Flags.HasFlag(CardCreationFlags.IsCardReward))
         {
             return options;
         }
 
-        var allCards = options.GetPossibleCards(player).ToList();
-        var newCards = ModelDb.CardPool<TCardPool>()
-            .GetUnlockedCards(player.UnlockState, player.RunState.CardMultiplayerConstraint)
-            .Where(card => !allCards.Contains(card));
-
-        if (options.CardPoolFilter is not null)
-        {
-            newCards = newCards.Where(options.CardPoolFilter);
-        }
-
+        HashSet<CardRarity>? allowedRarities = null;
         if (options.Flags.HasFlag(CardCreationFlags.NoRarityModification))
         {
-            var allowedRarities = allCards.Select(c => c.Rarity).ToHashSet();
-            newCards = newCards.Where(c => allowedRarities.Contains(c.Rarity));
+            allowedRarities = options.GetPossibleCards(player).Select(c => c.Rarity).ToHashSet();
         }
 
+        options = options.WithCardPools(options.CardPools.Union([ModelDb.CardPool<TCardPool>()]));
+
+        if (allowedRarities is null)
+        {
+            return options;
+        }
+
+        var existingFilter = options.CardPoolFilter;
+        options = options.WithFilter(c =>
+            allowedRarities.Contains(c.Rarity) && (existingFilter is null || existingFilter(c)));
+
         return options;
-        // todo: fix
-        // return options.WithCustomPool(allCards.Concat(newCards));
     }
 
     /**
