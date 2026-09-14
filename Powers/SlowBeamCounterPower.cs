@@ -44,7 +44,7 @@ public class SlowBeamCounterPower : CustomPower
      */
     public async Task ApplyStoredDamage(PlayerChoiceContext choiceContext)
     {
-        await CreatureCmd.Damage(choiceContext, Owner, (decimal) Amount, ValueProp.Unblockable | ValueProp.Unpowered, null, null);
+        await CreatureCmd.Damage(choiceContext, Owner, Amount, ValueProp.Unblockable | ValueProp.Unpowered, null, null);
         await PowerCmd.Remove(this);
     }
 }
