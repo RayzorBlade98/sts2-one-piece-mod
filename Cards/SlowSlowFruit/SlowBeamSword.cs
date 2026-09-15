@@ -9,6 +9,11 @@ using RayzorBladeOnePiece.Powers;
 
 namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
 
+/**
+ * Apply <see cref="SlowBeamPower"/> and deal 6 damage.
+ * <br />
+ * If the target already has <see cref="SlowBeamPower"/>, remove it and trigger the stored damage from <see cref="SlowBeamCounterPower"/>.
+ */
 [Pool(typeof(SlowSlowFruitCardPool))]
 public class SlowBeamSword() : ModdedCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
