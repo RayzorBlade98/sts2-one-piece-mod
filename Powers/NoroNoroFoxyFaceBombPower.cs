@@ -23,7 +23,7 @@ public class NoroNoroFoxyFaceBombPower : CustomPower
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new DamageVar(NoroNoroFoxyFaceBomb.BombDamage, ValueProp.Unpowered)];
 
-    public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
+    public override async Task BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
         if (side == Owner.Side || Owner.Player is null || Owner.CombatState is null)

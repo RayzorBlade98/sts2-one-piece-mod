@@ -16,12 +16,8 @@ namespace RayzorBladeOnePiece.Powers;
 /**
  * Debuff that reduces the owners damage to <see cref="DamageDecreaseKey"/> % (75%) for one turn.
  * <br />
- * If the user receives card damage, it's reduced to zero and instead <see cref="StoredDamageIncreaseKey"/> % (150%)
+ * If the user receives damage, it's reduced to zero and instead <see cref="StoredDamageIncreaseKey"/> % (150%)
  * of the damage is stored as <see cref="SlowBeamCounterPower"/>
- *
- * <remarks>
- * Currently only works for enemy creatures as it checks for card sources
- * </remarks>
  */
 public class SlowBeamPower : CustomPower
 {
@@ -52,14 +48,14 @@ public class SlowBeamPower : CustomPower
      * If the owner receives card damage, reduce it to zero and instead apply <see cref="StoredDamageIncreaseKey"/> %
      * of it as <see cref="SlowBeamCounterPower"/>.
      */
-    public override decimal ModifyHpLostAfterOstyLate(
+    public override decimal ModifyHpLostAfterOsty(
         Creature target,
         decimal amount,
         ValueProp props,
         Creature? dealer,
         CardModel? cardSource)
     {
-        if (target != Owner || cardSource is null || amount <= 0M)
+        if (target != Owner || amount <= 0M)
         {
             return amount;
         }
@@ -80,7 +76,7 @@ public class SlowBeamPower : CustomPower
     /**
      * Remove power after enemy turn
      */
-    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
+    public override async Task BeforeSideTurnEndEarly(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         if (side != Owner.Side)
         {
