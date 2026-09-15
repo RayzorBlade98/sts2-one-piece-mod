@@ -1,10 +1,10 @@
 {
-  "RAYZORBLADEONEPIECE-DELAYED_BOMBARDMENT_POWER.description": "<RAYZORBLADEONEPIECE-DELAYED_BOMBARDMENT_POWER.description>",
-  "RAYZORBLADEONEPIECE-DELAYED_BOMBARDMENT_POWER.smartDescription": "Füge am Ende des gegnerischen Zuges [blue]{Amount}[/blue] mal einem zufälligen Gegner [blue]{Damage:diff()}[/blue] Schaden zu.",
-  "RAYZORBLADEONEPIECE-DELAYED_BOMBARDMENT_POWER.title": "Verzögerte Bombardierung",
   "RAYZORBLADEONEPIECE-MUNCH_MUNCH_FORM_POWER.description": "<RAYZORBLADEONEPIECE-MUNCH_MUNCH_FORM_POWER.description>",
   "RAYZORBLADEONEPIECE-MUNCH_MUNCH_FORM_POWER.smartDescription": "[gold]Transformiere[/gold] immer zu Beginn deines Zuges eine [gold]Handkarte[/gold] in eine zufällige {IsUpgraded.BoolVal:cond:verbesserte |}[gold]Wapometall[/gold] Karte.",
   "RAYZORBLADEONEPIECE-MUNCH_MUNCH_FORM_POWER.title": "Mampf-Mampf Form",
+  "RAYZORBLADEONEPIECE-NORO_NORO_FOXY_FACE_BOMB_POWER.description": "<RAYZORBLADEONEPIECE-NORO_NORO_FOXY_FACE_BOMB_POWER.description>",
+  "RAYZORBLADEONEPIECE-NORO_NORO_FOXY_FACE_BOMB_POWER.smartDescription": "Füge am Ende des gegnerischen Zuges [blue]{Amount}[/blue] mal einem zufälligen Gegner [blue]{Damage:diff()}[/blue] Schaden zu.",
+  "RAYZORBLADEONEPIECE-NORO_NORO_FOXY_FACE_BOMB_POWER.title": "Noro Noro Foxy Gesichtsbombe",
   "RAYZORBLADEONEPIECE-RUST_FORM_POWER.description": "Wenn von einem Angriff getroffen, wende [gold]Rostig[/gold] an.",
   "RAYZORBLADEONEPIECE-RUST_FORM_POWER.smartDescription": "Wenn von einem Angriff getroffen, wende [blue]{Amount}[/blue] [gold]Rostig[/gold] an.",
   "RAYZORBLADEONEPIECE-RUST_FORM_POWER.title": "Rostform",

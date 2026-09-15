@@ -7,12 +7,12 @@ using RayzorBladeOnePiece.Powers;
 namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
 
 /**
- * Apply <see cref="DelayedBombardmentPower"/> that damages random enemies for 10 damage 3 times at the end of their turn.
+ * Apply <see cref="NoroNoroFoxyFaceBombPower"/> that damages random enemies for 10 damage 3 times at the end of their turn.
  * <br />
  * <b>Upgrade:</b> Increase the number of times the bomb hits by 1
  */
 [Pool(typeof(SlowSlowFruitCardPool))]
-public class DelayedBombardment() : ModdedCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class NoroNoroFoxyFaceBomb() : ModdedCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     public const decimal BombDamage = 10m;
     private const string BombDamageKey = "BombDamage";
@@ -27,7 +27,7 @@ public class DelayedBombardment() : ModdedCard(2, CardType.Skill, CardRarity.Unc
 
     protected override async Task OnPlay(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        await CommonActions.ApplySelf<DelayedBombardmentPower>(context, this, DynamicVars[BombAmountKey].BaseValue);
+        await CommonActions.ApplySelf<NoroNoroFoxyFaceBombPower>(context, this, DynamicVars[BombAmountKey].BaseValue);
     }
 
     protected override void OnUpgrade() => DynamicVars[BombAmountKey].UpgradeValueBy(1m);

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c706fqotna8e"
-path="res://.godot/imported/delayed_bombardment.png-f08e746605ece21d993b04634c5a49c8.ctex"
+uid="uid://h6hr5y32nv8j"
+path="res://.godot/imported/noro_noro_foxy_face_bomb.png-f8622f7f488f1d979a4efe8102f44905.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://RayzorBladeOnePiece/images/card_portraits/delayed_bombardment.png"
-dest_files=["res://.godot/imported/delayed_bombardment.png-f08e746605ece21d993b04634c5a49c8.ctex"]
+source_file="res://RayzorBladeOnePiece/images/card_portraits/big/noro_noro_foxy_face_bomb.png"
+dest_files=["res://.godot/imported/noro_noro_foxy_face_bomb.png-f8622f7f488f1d979a4efe8102f44905.ctex"]
 
 [params]
 

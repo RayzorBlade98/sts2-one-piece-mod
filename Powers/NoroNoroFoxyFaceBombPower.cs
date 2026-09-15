@@ -13,20 +13,20 @@ using RayzorBladeOnePiece.Cards.SlowSlowFruit;
 namespace RayzorBladeOnePiece.Powers;
 
 /**
- * Deals 10 damage to a random enemy repeated for each stack
+ * Deals <see cref="NoroNoroFoxyFaceBomb.BombDamage"/> damage to a random enemy repeated for each stack
  */
-public class DelayedBombardmentPower : CustomPower
+public class NoroNoroFoxyFaceBombPower : CustomPower
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new DamageVar(DelayedBombardment.BombDamage, ValueProp.Unpowered)];
+        [new DamageVar(NoroNoroFoxyFaceBomb.BombDamage, ValueProp.Unpowered)];
 
     public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
     {
-        if (side == Owner.Side || Owner.Player is null || Owner.CombatState is null || !participants.Contains(Owner))
+        if (side == Owner.Side || Owner.Player is null || Owner.CombatState is null)
         {
             return;
         }
