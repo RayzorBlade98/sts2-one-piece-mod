@@ -15,7 +15,7 @@
   "RAYZORBLADEONEPIECE-MUNCH_MUNCH_FACTORY.title": "Mampf-Mampf Fabrik",
   "RAYZORBLADEONEPIECE-MUNCH_MUNCH_FORM.description": "[gold]Transformiere[/gold] immer zu Beginn deines Zuges eine [gold]Handkarte[/gold] in eine zufällige {IfUpgraded:show:verbesserte }[gold]Wapometall[/gold] Karte.",
   "RAYZORBLADEONEPIECE-MUNCH_MUNCH_FORM.title": "Mampf-Mampf Form",
-  "RAYZORBLADEONEPIECE-NORO_NORO_FOXY_FACE_BOMB.description": "Füge am Ende des gegnerischen Zuges {BombAmount:diff()} mal einem zufälligen Gegner {BombDamage:diff()} Schaden zu.",
+  "RAYZORBLADEONEPIECE-NORO_NORO_FOXY_FACE_BOMB.description": "Füge am Ende des gegnerischen Zuges {BombAmount:diff()} mal einem zufälligen Gegner {BombDamage:diff()} Schaden zu.{IfUpgraded:show:\nFokusiere Gegner mit [gold]Slow Beamed[/gold]|}",
   "RAYZORBLADEONEPIECE-NORO_NORO_FOXY_FACE_BOMB.title": "Noro Noro Foxy Gesichtsbombe",
   "RAYZORBLADEONEPIECE-RUST_FORM.description": "Wenn du von einem Angriff getroffen wirst, wende [blue]{RustAmount}[/blue] [gold]Rostig[/gold] an.",
   "RAYZORBLADEONEPIECE-RUST_FORM.title": "Rostform",

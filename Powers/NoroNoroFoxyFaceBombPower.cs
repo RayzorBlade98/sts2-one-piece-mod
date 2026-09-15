@@ -17,11 +17,22 @@ namespace RayzorBladeOnePiece.Powers;
  */
 public class NoroNoroFoxyFaceBombPower : CustomPower
 {
+    private const string IsUpgradedKey = "IsUpgraded";
+
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new DamageVar(NoroNoroFoxyFaceBomb.BombDamage, ValueProp.Unpowered)];
+    [
+        new DamageVar(NoroNoroFoxyFaceBomb.BombDamage, ValueProp.Unpowered), new BoolVar(IsUpgradedKey, false)
+    ];
+
+    public void Init(decimal damage, bool isUpgraded)
+    {
+        DynamicVars.Damage.BaseValue = damage;
+        ((BoolVar)DynamicVars[IsUpgradedKey]).BoolVal = isUpgraded;
+    }
 
     public override async Task BeforeSideTurnEndVeryEarly(PlayerChoiceContext choiceContext, CombatSide side,
         IEnumerable<Creature> participants)
@@ -36,7 +47,8 @@ public class NoroNoroFoxyFaceBombPower : CustomPower
 
         for (var i = 0; i < Amount; i++)
         {
-            var target = Owner.Player.RunState.Rng.CombatTargets.NextItem(Owner.CombatState.HittableEnemies);
+            var targetedEnemies = GetTargetedEnemies(Owner.CombatState);
+            var target = Owner.Player.RunState.Rng.CombatTargets.NextItem(targetedEnemies);
             if (target is null)
             {
                 continue;
@@ -48,5 +60,21 @@ public class NoroNoroFoxyFaceBombPower : CustomPower
         }
 
         await PowerCmd.Remove(this);
+    }
+
+    private IEnumerable<Creature> GetTargetedEnemies(ICombatState combatState)
+    {
+        // Prevent overkill by focusing enemies that aren't already killed by stored slow beam damage
+        var targetedEnemies =
+            combatState.HittableEnemies.Where(e => e.GetPowerAmount<SlowBeamCounterPower>() < e.CurrentHp);
+
+        // If upgraded focus slow beamed enemies
+        if (((BoolVar)DynamicVars[IsUpgradedKey]).BoolVal)
+        {
+            targetedEnemies = targetedEnemies.Where(e => e.HasPower<SlowBeamPower>());
+        }
+
+        var targetedEnemiesArray = targetedEnemies.ToArray();
+        return targetedEnemiesArray.Length != 0 ? targetedEnemiesArray : combatState.HittableEnemies;
     }
 }
