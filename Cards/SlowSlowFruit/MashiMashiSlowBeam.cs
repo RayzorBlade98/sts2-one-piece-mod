@@ -8,6 +8,11 @@ using RayzorBladeOnePiece.Powers;
 
 namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
 
+/**
+ * If the target has <see cref="SlowBeamPower"/>, Stun it. Exhaust.
+ * <br />
+ * <b>Upgrade:</b> Add retain.
+ */
 [Pool(typeof(SlowSlowFruitCardPool))]
 public class MashiMashiSlowBeam() : ModdedCard(3, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy)
 {
@@ -31,5 +36,5 @@ public class MashiMashiSlowBeam() : ModdedCard(3, CardType.Skill, CardRarity.Rar
         }
     }
 
-    protected override void OnUpgrade() => RemoveKeyword(CardKeyword.Exhaust);
+    protected override void OnUpgrade() => AddKeyword(CardKeyword.Retain);
 }

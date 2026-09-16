@@ -7,7 +7,7 @@ using RayzorBladeOnePiece.Powers;
 namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
 
 /**
- * Apply <see cref="SlowBeamPower"/> to all enemies
+ * Apply <see cref="SlowBeamPower"/> to all enemies. Exhaust
  * <br />
  * <b>Upgrade:</b> Add retain.
  */
@@ -16,6 +16,8 @@ public class DoubleSlowBeam() : ModdedCard(1, CardType.Skill, CardRarity.Uncommo
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SlowBeamPower>()];
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+    
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (CombatState is null)

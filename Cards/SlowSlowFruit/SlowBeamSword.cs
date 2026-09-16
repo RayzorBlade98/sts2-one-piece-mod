@@ -10,14 +10,16 @@ using RayzorBladeOnePiece.Powers;
 namespace RayzorBladeOnePiece.Cards.SlowSlowFruit;
 
 /**
- * Apply <see cref="SlowBeamPower"/> and deal 6 damage.
+ * Apply <see cref="SlowBeamPower"/> and deal 4 damage.
  * <br />
  * If the target already has <see cref="SlowBeamPower"/>, remove it and trigger the stored damage from <see cref="SlowBeamCounterPower"/>.
+ * <br />
+ * <b>Upgrade:</b> Increase damage by 2.
  */
 [Pool(typeof(SlowSlowFruitCardPool))]
 public class SlowBeamSword() : ModdedCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6M, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4M, ValueProp.Move)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
@@ -51,4 +53,6 @@ public class SlowBeamSword() : ModdedCard(1, CardType.Attack, CardRarity.Common,
             await storedDamagePower.ApplyStoredDamage(choiceContext);
         }
     }
+    
+    protected override void OnUpgrade() => DynamicVars.Damage.UpgradeValueBy(2M);
 }
