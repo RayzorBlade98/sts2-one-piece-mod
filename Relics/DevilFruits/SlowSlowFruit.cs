@@ -3,7 +3,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using RayzorBladeOnePiece.Cards.SlowSlowFruit;
 
-namespace RayzorBladeOnePiece.Relics;
+namespace RayzorBladeOnePiece.Relics.DevilFruits;
 
 public class SlowSlowFruit : DevilFruitRelic<SlowSlowFruitCardPool>
 {
