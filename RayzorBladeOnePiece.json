@@ -1,8 +1,8 @@
 {
   "id": "RayzorBladeOnePiece",
-  "name": "RayzorBlade98 OnePiece Mod",
+  "name": "One Piece",
   "author": "RayzorBlade98",
-  "description": "Slay the Spire 2 mod created from a template for use with BaseLib",
+  "description": "Adds new content like devil fruits from the One Piece universe",
   "version": "0.0.0",
   "min_game_version": "0.111.0",
   "has_pck": true,
