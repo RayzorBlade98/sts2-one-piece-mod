@@ -8,12 +8,16 @@ using MegaCrit.Sts2.Core.Runs;
 
 namespace RayzorBladeOnePiece.Relics;
 
+[Pool(typeof(SharedRelicPool))]
+public abstract class DevilFruitRelic : CustomRelic
+{
+}
+
 /**
  * Each devil fruit relic has a corresponding <see cref="CardPoolModel"/> <typeparamref name="TCardPool"/> that is added
  * to the card rewards pool and merchant card pool.
  */
-[Pool(typeof(SharedRelicPool))]
-public abstract class DevilFruitRelic<TCardPool> : CustomRelic where TCardPool : CardPoolModel
+public abstract class DevilFruitRelic<TCardPool> : DevilFruitRelic where TCardPool : CardPoolModel
 {
     #region Additional card pool
 
